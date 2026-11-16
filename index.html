@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Node Builder</title>
+<meta name="description" content="Troubleshoot a Lightchain worker or a Lightchain Rails install. Setup uses the official scripts.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%B3%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#06192c; --ink:#eaf6ff; --muted:#b7d4e8; --line:rgba(143,215,255,.28);
+    --card:#0c2f4d; --accent:#8fd7ff; --warn:#ffd59a; --bad:#ffb4b4; --ok:#b6f3c8;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.55;
+    background:radial-gradient(1200px 700px at 50% -8%,#1a4e73 0%,#0c2f4d 42%,var(--bg) 100%);
+  }
+  a{color:var(--accent)}
+  header,main,footer{width:min(820px,calc(100% - 32px)); margin:0 auto}
+  header{padding:28px 0 8px}
+  .badge{letter-spacing:.14em; text-transform:uppercase; font-size:12px; font-weight:700; color:var(--accent)}
+  h1{font-size:clamp(32px,6vw,48px); line-height:1.1; margin:8px 0 10px}
+  h2{font-size:26px; margin:0 0 10px}
+  h3{font-size:18px; margin:18px 0 6px}
+  .lede{color:var(--muted); font-size:18px; margin:0}
+  nav{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 8px}
+  nav a{
+    color:var(--ink); text-decoration:none; border:1px solid var(--line);
+    border-radius:999px; padding:6px 12px; background:rgba(6,25,44,.35);
+  }
+  section{
+    background:rgba(12,47,77,.72); border:1px solid var(--line);
+    border-radius:16px; padding:22px 20px; margin:16px 0;
+  }
+  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  code{font-size:.92em}
+  pre{
+    background:#041421; border-radius:10px; padding:12px 14px; overflow:auto;
+    border:1px solid var(--line); font-size:14px; line-height:1.45;
+  }
+  table{width:100%; border-collapse:collapse; font-size:15px}
+  th,td{text-align:left; vertical-align:top; padding:8px 8px 8px 0; border-bottom:1px solid var(--line)}
+  th{color:var(--accent); font-weight:650}
+  .note{color:var(--warn)}
+  label{display:block; font-weight:650; margin:12px 0 6px}
+  select,textarea{
+    width:100%; color:var(--ink); background:#041421; border:1px solid var(--line);
+    border-radius:10px; padding:10px; font:inherit;
+  }
+  textarea{min-height:140px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:14px}
+  button{
+    margin-top:12px; background:#8fd7ff; color:#062033; border:0; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:16px; cursor:pointer;
+  }
+  #result{margin-top:14px}
+  #result p{margin:8px 0}
+  .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  footer{color:var(--muted); font-size:14px; padding:8px 0 40px}
+  ul{margin:8px 0; padding-left:1.2em}
+</style>
+</head>
+<body>
+<header>
+  <div class="badge">Node Builder · orcanode.win</div>
+  <h1>Troubleshoot the install.</h1>
+  <p class="lede">Node Builder reads a Lightchain Rails result and tells you what the exit meant. The installer stays the official one. This site does not host those scripts and it does not run them for you.</p>
+  <nav>
+    <a href="#read">Read a result</a>
+    <a href="#codes">Exit codes</a>
+    <a href="#nofile">No status file</a>
+    <a href="#setup">Official setup</a>
+    <a href="#running">Worker already up</a>
+  </nav>
+</header>
+<main>
+  <section id="read">
+    <h2>Read a result</h2>
+    <p>On the server, after the script stops:</p>
+    <pre>echo "exit $?"
+cat /etc/lightchain/deploy-status.json
+tail -n 40 /var/log/lightchain-deploy.log</pre>
+    <p>Paste the status file below. It stays in this browser. Nothing is uploaded.</p>
+    <label for="code">Exit code</label>
+    <select id="code">
+      <option value="">I don't have one</option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="none">The script never wrote a status file</option>
+    </select>
+    <label for="status">Status file</label>
+    <textarea id="status" spellcheck="false" placeholder='{"script":"deploy-worker.sh","state":"needs-funding","updated":"2026-11-16T13:00:00Z"}'></textarea>
+    <button type="button" id="go">Explain this result</button>
+    <div id="result" aria-live="polite"></div>
+  </section>
+
+  <section id="codes">
+    <h2>Exit codes</h2>
+    <p>The worker script and the node script share <code>/etc/lightchain/deploy-status.json</code> and <code>/var/log/lightchain-deploy.log</code>. The <code>script</code> field says which one wrote the file. The <code>updated</code> field is UTC. If that time is not this run, you are looking at an older file. Read the end of the log.</p>
+    <h3>deploy-worker.sh</h3>
+    <table>
+      <thead><tr><th>Exit</th><th>Meaning</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>Running</td><td>Back up <code>/etc/lightchain/worker/</code>. That directory holds the worker key, the encryption key, and the password.</td></tr>
+        <tr><td>1</td><td>Failed, or the lock is busy</td><td>Read the log. A second deploy exits 1 and leaves the old status file in place.</td></tr>
+        <tr><td>2</td><td>Needs funding</td><td>Send 50,000 LCAI, plus about 50 LCAI for gas, to the address in the status file. Then run the same command again.</td></tr>
+        <tr><td>3</td><td>Reboot required</td><td>The NVIDIA driver was installed. Reboot. The deploy continues after boot. If it does not, run the same command again.</td></tr>
+        <tr><td>4</td><td>Preflight refused</td><td>The status state is <code>failed</code>. Fix the machine, then run the same command again.</td></tr>
+      </tbody>
+    </table>
+    <p>Worker checks that stop the script with exit 4:</p>
+    <ul>
+      <li>Not running as root. This one exits before the status file is written.</li>
+      <li>No NVIDIA card on the machine.</li>
+      <li>Under 16 GB of RAM.</li>
+      <li>Under 60 GB free on <code>/</code>. With <code>--models-disk</code>, that floor on <code>/</code> is 20 GB.</li>
+    </ul>
+    <p>Worker checks that only warn: under 32 GB of RAM, under 8 vCPU, under 8 GB of VRAM, under 100 GB free on <code>/</code>, and Ubuntu other than 22.04 or 24.04. The 100 GB warning is skipped when <code>--models-disk</code> is set. Under 8 GB of VRAM, the script warns that <code>llama3-8b</code> will not fit, and it keeps going.</p>
+    <h3>deploy-node.sh</h3>
+    <p>The node script uses exit 0 (running), exit 1 (failed), and exit 4 (preflight refused). It does not use exit 2 or exit 3.</p>
+    <p>Node checks that stop the script with exit 4: not root, a CPU other than amd64, a role other than <code>node</code> or <code>validator</code>, a validator run missing keystores or the password file or the fee recipient, <code>--public-rpc</code> without <code>--rpc-allow</code>, under 8 GB of RAM, under 150 GB free on the data directory, or no public IPv4 address.</p>
+    <p>Node checks that only warn: Ubuntu other than 22.04 or 24.04, under 16 GB of RAM, under 4 vCPU, and under 200 GB free.</p>
+  </section>
+
+  <section id="nofile">
+    <h2>No status file</h2>
+    <p>A missing <code>/etc/lightchain/deploy-status.json</code> means this run never reached the preflight write. Check which of these it was:</p>
+    <ul>
+      <li>The terminal said <code>run as root</code> and the exit was 4. Run the same command as root.</li>
+      <li>A bad flag, or a network name other than <code>mainnet</code> or <code>testnet</code>. Those exit 1 before the root check.</li>
+      <li><code>--version</code> or <code>--help</code>. Those exit 0 and do not write a file.</li>
+      <li><code>--dry-run</code>. That prints the plan, exits 0, and does not write a file.</li>
+      <li>Another deploy already holds <code>/var/lock/lightchain-deploy.lock</code>. You are root, the exit is 1, the line is in the deploy log, and an older status file is left as it was. Wait for the other run to finish. The node script and the worker script share that lock.</li>
+      <li>The script was never run.</li>
+    </ul>
+    <p>If a status file is present but its <code>updated</code> time is from an earlier run, this attempt died before it could rewrite the file. Use the log from this run, not the old state.</p>
+  </section>
+
+  <section id="setup">
+    <h2>Official setup</h2>
+    <p>Use a blank Ubuntu server. 22.04 and 24.04 are the versions the scripts were tested on. Other Ubuntu versions get a warning, and the script continues. Read the script before you run it. It runs as root, installs packages, and can reboot the machine for an NVIDIA driver.</p>
+    <p>The scripts live in the official repo: <a href="https://github.com/lightchain-protocol/lightchain-rails">lightchain-protocol/lightchain-rails</a>. The license is MIT. Node Builder links to that copy. It does not ship its own.</p>
+    <h3>Worker</h3>
+    <p>A fresh server with an NVIDIA card. Mainnet stake is 50,000 LCAI, plus about 50 LCAI for gas. Testnet stake in the script is 100 LCAI. The default model in the official example is <code>llama3-8b</code>.</p>
+    <pre>git clone https://github.com/lightchain-protocol/lightchain-rails.git
+cd lightchain-rails
+sudo bash deploy-worker.sh --network mainnet --models llama3-8b --dry-run</pre>
+    <p>Read the plan. Then run the same command without <code>--dry-run</code>. Add <code>--auto-reboot</code> only if you want the script to reboot itself when the driver install needs it. Come back here with the exit code and the status file.</p>
+    <p><code>--models-disk</code> puts models on a second disk. The script formats that disk only when it has no filesystem, and it labels the new filesystem <code>ollama</code>. A disk that already has a filesystem is not wiped. The mount looks for <code>LABEL=ollama</code>, so a disk with a different label can fail to mount.</p>
+    <h3>Node</h3>
+    <p>A fresh server with a public IPv4 address. A validator needs 500,000 LCAI staked per key, plus the keystores, the password file, and a fee-recipient address. The script does not stake that for you.</p>
+    <pre>git clone https://github.com/lightchain-protocol/lightchain-rails.git
+cd lightchain-rails
+sudo bash deploy-node.sh --network mainnet --extip YOUR_PUBLIC_IP --dry-run</pre>
+    <p>A validator passes <code>--role validator</code>, <code>--keystores</code>, <code>--password</code>, and <code>--fee-recipient</code>. Read <code>deploy-node.sh</code> before you run it. The official worker guide is <a href="https://workers.lightchain.ai/run-node">workers.lightchain.ai/run-node</a>.</p>
+  </section>
+
+  <section id="running">
+    <h2>Worker already up</h2>
+    <p>These commands are the ones the worker script prints when the service is running. Run them on that server.</p>
+    <pre>lcw status
+systemctl status lightchain-worker
+journalctl -u lightchain-worker -f
+lcw balance
+lcw withdraw</pre>
+    <p><code>systemctl stop lightchain-worker</code> drains an in-flight job. That can take up to 4 minutes. <code>lcw deregister</code> leaves the network and withdraws the stake after the dispute window.</p>
+    <ul>
+      <li>The chain is the record. A worker history page can lag, and it can hide a timeout.</li>
+      <li>An open job that is stuck can be abandoned by the worker account. That frees the slot, refunds the payer, and adds a reputation timeout. It does not take stake and it does not add an offence.</li>
+      <li>A timeout claim on an acknowledged job is the slash. It records an offence. It is the wrong tool for clearing your own stuck job.</li>
+      <li>A completed job waits out the dispute window, about 24 hours, and then releases. Leave it alone.</li>
+      <li>Changing the model list and restarting does not remove a model already registered on chain.</li>
+      <li>An answer that is only a thinking trace, with no visible answer, is a failed answer.</li>
+      <li>Keep one model loaded and keep its context on the GPU. A visible answer should land in about two minutes.</li>
+    </ul>
+    <p>Back up <code>/etc/lightchain/worker/</code> after the first successful run. Losing the encryption key after registration means the worker cannot serve sessions.</p>
+  </section>
+</main>
+<footer>
+  <p>Node Builder is a community troubleshooter by KeikoDev. Lightchain Rails is published by Lightchain Protocol. A listing or a guide is not an audit of those scripts.</p>
+</footer>
+<script>
+(function () {
+  var btn = document.getElementById("go");
+  var out = document.getElementById("result");
+  function line(cls, text) {
+    var p = document.createElement("p");
+    p.className = cls || "";
+    p.textContent = text;
+    out.appendChild(p);
+  }
+  btn.addEventListener("click", function () {
+    out.replaceChildren();
+    var code = document.getElementById("code").value;
+    var raw = document.getElementById("status").value.trim();
+    if (code === "none" && !raw) {
+      line("warn", "No status file. Match the terminal message to the list in No status file.");
+      line("", "run as root and exit 4: run it as root. A bad flag or a bad network name exits 1 before that check. --version, --help, and --dry-run exit 0 and write nothing. A busy lock exits 1 after the root check, writes a line to the deploy log, and leaves any older status file alone.");
+      return;
+    }
+    if (!raw && !code) {
+      line("warn", "Paste the status file, or pick an exit code.");
+      return;
+    }
+    var data = null;
+    if (raw) {
+      try { data = JSON.parse(raw); }
+      catch (e) {
+        line("bad", "That text is not JSON. Paste the status file as the script wrote it.");
+        return;
+      }
+      if (!data || typeof data !== "object" || Array.isArray(data)) {
+        line("bad", "The status file should be one JSON object.");
+        return;
+      }
+      var script = data.script || "(no script field)";
+      var state = data.state || "(no state)";
+      line("", "Script " + script + ", state " + state + ".");
+      if (data.updated) {
+        var t = Date.parse(data.updated);
+        if (isNaN(t)) line("warn", "updated is not a time this page can read: " + data.updated);
+        else {
+          var ageMin = Math.round((Date.now() - t) / 60000);
+          var fresh = ageMin <= 20 && ageMin >= -2;
+          line(fresh ? "ok" : "warn", "updated " + data.updated + " (" + ageMin + " min from this browser's clock). " + (fresh ? "That is recent." : "If that is not this run, read the end of /var/log/lightchain-deploy.log. The file may be from an earlier run."));
+        }
+      } else {
+        line("warn", "No updated time. This is not a complete status file.");
+      }
+      if (script === "deploy-node.sh" && (code === "2" || code === "3")) {
+        line("warn", "deploy-node.sh does not use exit 2 or exit 3. Those codes belong to deploy-worker.sh.");
+      }
+      if (state === "running") line("ok", "The script's last write says running. Back up /etc/lightchain/worker/ if this was a worker. Then check lcw status.");
+      if (state === "needs-funding") line("warn", "Fund the address in this file with 50,000 LCAI plus about 50 LCAI for gas, then run the same worker command again.");
+      if (state === "reboot-required") line("warn", "Reboot the machine. After boot, run the same command again if the deploy does not continue.");
+      if (state === "deploying") line("warn", "The file was left in deploying. The run may still be going, or it died after this write. Check the lock and the end of the log.");
+      if (state === "removed") line("", "The last write was an uninstall. The service was removed. Keys and data stay unless that run also purged them.");
+      if (state === "failed") line("bad", "The last write is failed. Exit 4 means preflight refused. Exit 1 means a later step failed. Use the log line, then run the same command again.");
+    }
+    if (code === "0") line("ok", "Exit 0 means the script finished in the running state.");
+    if (code === "1") line("warn", "Exit 1 is a failure, or the shared deploy lock was busy. A busy lock does not update the status file. Read the newest lines of the deploy log.");
+    if (code === "2") line("warn", "Exit 2 means the worker address still needs 50,000 LCAI plus gas. Send it, then re-run.");
+    if (code === "3") line("warn", "Exit 3 means the worker script installed the NVIDIA driver and is waiting for a reboot.");
+    if (code === "4") line("bad", "Exit 4 is preflight. Not root writes no status file. The other refusals write state failed, then exit 4.");
+    if (code === "none") line("warn", "You also have a status file. If its updated time is old, this run stopped before it could replace that file.");
+  });
+})();
+</script>
+</body>
+</html>
