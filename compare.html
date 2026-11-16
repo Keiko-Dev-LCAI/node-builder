@@ -147,18 +147,17 @@
 
 <main class="wrap">
   <h1>Compare your node</h1>
-  <p class="subtitle">One button. Scans Docker, Ollama, VPN, config, logs, and on-chain status on <strong>this computer</strong>. Shows only what doesn't match a verified earning mainnet node — plus how to fix each item.</p>
+  <p class="subtitle">This page used to score a machine against a June 2026 gateway profile: Redis, a VPN, and an old image. That is not a current sortition worker. This site does not run the checker, and nothing you type is uploaded.</p>
 
   <div id="hostBanner" class="host-banner"></div>
 
   <div class="setup-card" id="setupCard">
-    <h2>Before you compare</h2>
-    <p class="hint" style="margin-bottom:10px">The compare tool reads your local machine. Start the OrcaNode server on the same computer as your worker:</p>
-    <div class="code">python3 ~/Desktop/orcanode/orcanode-server.py</div>
+    <h2>Use the manual checks</h2>
+    <p class="hint" style="margin-bottom:10px">The button below only talks to a checker on this computer. The public site does not run one. The current checks are on the main page: sortition on, Ollama answering, the chain model name, and the chain stake. Nothing you type here is stored or sent to the site operator.</p>
     <ol class="setup-steps">
-      <li>Run the command above in a terminal (leave it open).</li>
-      <li>Open this page at <a href="http://localhost:8185/compare" style="color:var(--cyan)">http://localhost:8185/compare</a> — or stay here if you already did.</li>
-      <li>Click <strong>Compare Now</strong>.</li>
+      <li>Open <a href="index.html" style="color:var(--cyan)">the troubleshooting page</a>.</li>
+      <li>Read the health checks and the stuck-job card.</li>
+      <li>Keep keys and logs on your own machine.</li>
     </ol>
   </div>
 
@@ -179,7 +178,7 @@
   </div>
 
   <p class="footer-note">
-    Built by <a href="https://github.com/Keiko-Dev-LCAI/orcanode">KeikoDev</a> ·
+    Built by <a href="https://github.com/Keiko-Dev-LCAI/node-builder">KeikoDev</a> ·
     <a href="index.html">Need full setup help?</a>
   </p>
 </main>
@@ -196,8 +195,7 @@
       return;
     }
     banner.style.display = 'block';
-    banner.innerHTML = 'You opened the shared link — good. The scan still runs on <strong>your</strong> computer via '
-      + '<code style="color:var(--cyan)">localhost:8185</code>. Start the server below, then click Compare Now.';
+    banner.innerHTML = 'This public page does not run the checker. Use the manual checks on the main page. Nothing you type here is uploaded.';
   })();
 
   async function runNodeCompare() {
@@ -258,13 +256,12 @@
       }
       results.style.display = 'block';
     } catch (e) {
-      badge.textContent = 'Server not running';
-      summary.textContent = '⚠️ Could not reach the compare server at localhost:8185.';
+      badge.textContent = 'Manual checks';
+      summary.textContent = 'This site does not run the checker.';
       summary.style.color = '#ffaa00';
       list.innerHTML = '<div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,170,0,0.3);border-radius:8px;padding:14px 16px">'
-        + '<div style="font-weight:600;margin-bottom:8px">Start the server on this machine:</div>'
-        + '<div class="code" style="margin-top:8px">python3 ~/Desktop/orcanode/orcanode-server.py</div>'
-        + '<div style="margin-top:10px;font-size:12px;color:var(--muted)">Then open <a href="http://localhost:8185/compare" style="color:var(--cyan)">http://localhost:8185/compare</a> and click Compare Now.</div></div>';
+        + '<div style="font-weight:600;margin-bottom:8px">Use the main page</div>'
+        + '<div style="margin-top:8px">Open the troubleshooting page. Nothing you type here is uploaded.</div></div>';
       results.style.display = 'block';
       document.getElementById('setupCard').style.display = 'block';
     }

@@ -281,11 +281,11 @@
         <div style="font-weight:700;font-size:14px;margin-bottom:10px;color:var(--cyan)">💰 What could you earn?</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
           <div style="background:rgba(0,0,0,0.3);border-radius:8px;padding:10px 14px;text-align:center">
-            <div style="font-size:13px;color:var(--muted);margin-bottom:4px">Per job</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:4px">Worker share of a 0.02 job</div>
             <div style="font-size:20px;font-weight:800;color:#fff">~0.016 <span style="font-size:12px;color:var(--muted)">LCAI</span></div>
           </div>
           <div style="background:rgba(0,0,0,0.3);border-radius:8px;padding:10px 14px;text-align:center">
-            <div style="font-size:13px;color:var(--muted);margin-bottom:4px">Avg per active node</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:4px">Worker / protocol / pool</div>
             <div id="rewardAvg" style="font-size:20px;font-weight:800;color:var(--green)">—</div>
           </div>
           <div style="background:rgba(0,0,0,0.3);border-radius:8px;padding:10px 14px;text-align:center">
@@ -293,19 +293,19 @@
             <div id="rewardJobs" style="font-size:20px;font-weight:800;color:#fff">—</div>
           </div>
         </div>
-        <div style="font-size:12px;color:var(--muted);margin-top:10px">Live from Lightchain mainnet subgraph · earnings grow as network AI usage increases · early operators get a larger share of current volume</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px">Worker share is 80 percent of the model fee. Protocol 15, pool 5. Read 16 Nov 2026. Counts below are the public indexer totals, not a promise of jobs.</div>
       </div>
 
       <div class="card" style="border-color:rgba(0,255,136,0.35);background:rgba(0,255,136,0.04);margin-bottom:20px">
         <div class="card-title">🎯 Already running a node? Compare it in one click</div>
-        <p style="color:var(--muted);font-size:14px;margin-bottom:14px;line-height:1.7">Scans <strong style="color:#fff">your machine</strong> against a verified working mainnet node. Shows <strong style="color:#fff">only problems and differences</strong> — each with a fix. No terminal copy-paste.</p>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:14px;line-height:1.7">The one-click compare used a June 2026 gateway profile. It is not a current sortition check, and this site does not run it. Use the troubleshooting cards. Nothing you type is uploaded.</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
           <button onclick="goToCompare()" style="background:linear-gradient(135deg,#00ff88,#00d4ff);color:#000;border:none;border-radius:8px;padding:12px 28px;font-weight:800;font-size:15px;cursor:pointer">
             Compare with Reference Node →
           </button>
           <a href="compare.html" style="color:var(--cyan);font-size:13px;text-decoration:none;border:1px solid rgba(0,212,255,0.35);border-radius:8px;padding:10px 16px">Shareable compare link</a>
         </div>
-        <div style="color:var(--muted);font-size:12px;margin-top:10px">Requires Node Builder server at <a href="http://localhost:8185" style="color:var(--cyan)">localhost:8185</a> · share <a href="compare.html" style="color:var(--cyan)">compare.html</a> without the full wizard</div>
+        <div style="color:var(--muted);font-size:12px;margin-top:10px">The public site does not run the checker. <a href="compare.html" style="color:var(--cyan)">compare.html</a> explains that. Manual checks stay on this page.</div>
       </div>
 
       <div class="card" style="border-color:rgba(0,212,255,0.35);background:rgba(0,212,255,0.04);margin-bottom:20px">
@@ -325,7 +325,7 @@
           <li>
             <div class="check-box" onclick="toggleCheck(this)"></div>
             <div class="check-text">
-              I have 50,001+ LCAI ready to stake (50,000 for stake + ~1 for gas)
+              I have 50,051+ LCAI ready to fund a new worker (50,000 locked as stake, about 50 for gas)
               <small>Don't have LCAI yet? Buy on a DEX or centralized exchange, then bridge to Lightchain Mainnet at <a href="https://bridge.lightchain.ai" target="_blank" style="color:var(--cyan)">bridge.lightchain.ai</a></small>
             </div>
           </li>
@@ -340,7 +340,7 @@
       </div>
 
       <div class="tips-row">
-        <div class="tip-pill"><div class="tip-pill-icon">🔋</div><div><strong style="display:block;margin-bottom:4px">Get a UPS</strong>A power outage mid-job can trigger a slash penalty. An Uninterruptible Power Supply ($60-$150) protects your 50,000 LCAI stake from a simple power hiccup.</div></div>
+        <div class="tip-pill"><div class="tip-pill-icon">🔋</div><div><strong style="display:block;margin-bottom:4px">Get a UPS</strong>A power cut can make an in-flight job miss its deadline. That records an offense. On 16 Nov 2026 the three slash rates were 0, so no LCAI moved, but the offense is still recorded. A UPS avoids that for the price of a power strip.</div></div>
         <div class="tip-pill"><div class="tip-pill-icon">📱</div><div><strong style="display:block;margin-bottom:4px">Have a phone hotspot ready</strong>If your home internet goes down, your node goes offline. A phone hotspot keeps it connected during short outages — the node's data usage is low enough to handle it.</div></div>
       </div>
 
@@ -352,33 +352,28 @@
           <div style="background:rgba(0,0,0,0.25);border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
             <span style="font-size:20px">📄</span>
             <div>
-              <div style="font-weight:700;color:var(--cyan);margin-bottom:3px">.env — Your node configuration</div>
-              <div style="font-size:13px;color:var(--muted)">Pre-filled with all mainnet addresses, RPC URLs, and settings. Open it in a text editor and fill in the 3 blanks as you reach each step:</div>
-              <ul style="font-size:12px;color:#aaa;margin:6px 0 0 16px;line-height:1.8">
-                <li><code style="color:var(--cyan)">PRIVATE_KEY</code> — your worker wallet private key (Step 4)</li>
-                <li><code style="color:var(--cyan)">ECDH_PRIVATE_KEY</code> — encryption key you generate (Step 8)</li>
-                <li><code style="color:var(--cyan)">WORKER_ADDRESS</code> — your worker wallet address (Step 4)</li>
-              </ul>
+              <div style="font-weight:700;color:var(--cyan);margin-bottom:3px">.env.template — checklist, not a key file</div>
+              <div style="font-size:13px;color:var(--muted)">Mainnet RPC, chain id, and the gateway URL. Do not put a private key in this file. The running worker reads a keystore, not a raw key.</div>
             </div>
           </div>
           <div style="background:rgba(0,0,0,0.25);border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
             <span style="font-size:20px">🚀</span>
             <div>
               <div style="font-weight:700;color:var(--cyan);margin-bottom:3px">run-worker.sh — One-command node launcher</div>
-              <div style="font-size:13px;color:var(--muted)">Once your .env is filled in, run this script to start your node. It handles the full docker run command with all the right flags — no manual typing.</div>
+              <div style="font-size:13px;color:var(--muted)">This script checks that Ollama, the llama3-8b alias, and the keystore directory are present. It does not start the container. Use the Step 11 command for that.</div>
             </div>
           </div>
           <div style="background:rgba(0,0,0,0.25);border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
             <span style="font-size:20px">✅</span>
             <div>
               <div style="font-weight:700;color:var(--cyan);margin-bottom:3px">setup-check.sh — Prerequisites checker</div>
-              <div style="font-size:13px;color:var(--muted)">Run this before Step 5 to verify Docker, NVIDIA toolkit, Ollama, Redis, and Foundry are all installed correctly. Catches problems before they stop you mid-setup.</div>
+              <div style="font-size:13px;color:var(--muted)">Run this before Step 5. It checks Docker, the NVIDIA driver, Ollama, the llama3-8b alias, Foundry, and the RPC. Redis is not part of an independent worker.</div>
             </div>
           </div>
         </div>
 
         <div style="background:rgba(255,200,0,0.07);border:1px solid rgba(255,200,0,0.2);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#ddc">
-          💡 <strong>How to use it:</strong> Download the zip now, unzip it into your home folder (<code style="color:var(--cyan)">~/</code>), and open <code style="color:var(--cyan)">.env</code> in a text editor. Keep it open alongside this wizard — you'll paste in each key as you generate it. When all 3 are filled in, run <code style="color:var(--cyan)">bash run-worker.sh</code> instead of the long docker command in Step 10.
+          💡 <strong>How to use it:</strong> Download the files into one folder. Run <code style="color:var(--cyan)">bash setup-check.sh</code>, then <code style="color:var(--cyan)">bash run-worker.sh</code>. Start the container with the Step 11 command. Do not paste a private key into either file.
         </div>
 
         <button onclick="downloadTemplateKit()" style="background:var(--cyan);color:#000;border:none;border-radius:8px;padding:12px 28px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px">
@@ -398,18 +393,18 @@
       <div class="step-header">
         <div class="step-phase">Step 1</div>
         <div class="step-title">Hardware Requirements</div>
-        <div class="step-desc">Your machine needs enough GPU power to run AI inference jobs. The minimum is 8GB VRAM — enough for llama3-8b, which is the primary model the network uses.</div>
+        <div class="step-desc">Your machine needs an NVIDIA GPU. The published minimum on the official run-node page is 8 GB of VRAM, which is enough for llama3-8b. Larger whitelisted models need more.</div>
       </div>
 
       <div class="card">
         <table class="spec-table">
           <tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr>
           <tr><td class="label">CPU</td><td class="min">4 cores (x86_64)</td><td class="rec">16+ cores (AMD/Intel)</td></tr>
-          <tr><td class="label">RAM</td><td class="min">16 GB DDR4</td><td class="rec">32–64 GB DDR5 <span class="keiko-badge">🐋 Keiko runs 32GB</span></td></tr>
+          <tr><td class="label">RAM</td><td class="min">16 GB DDR4</td><td class="rec">64 GB DDR5</td></tr>
           <tr><td class="label">Storage</td><td class="min">512 GB NVMe SSD</td><td class="rec">2 TB NVMe Gen4</td></tr>
-          <tr><td class="label">GPU VRAM</td><td class="min">8 GB (llama3-8b)</td><td class="rec">12–24 GB <span class="keiko-badge">🐋 RTX 5070 12GB</span></td></tr>
+          <tr><td class="label">GPU VRAM</td><td class="min">8 GB (llama3-8b)</td><td class="rec">24 GB</td></tr>
           <tr><td class="label">Internet</td><td class="min">100 Mbps up/down</td><td class="rec">1 Gbps symmetric</td></tr>
-          <tr><td class="label">OS</td><td class="min">Ubuntu 22.04+</td><td class="rec">Ubuntu 22.04 or 26.04</td></tr>
+          <tr><td class="label">OS</td><td class="min">Ubuntu 22.04+</td><td class="rec">Ubuntu 22.04 or 24.04</td></tr>
         </table>
       </div>
 
@@ -420,7 +415,7 @@
 
       <div class="callout tip">
         <div class="callout-icon">💡</div>
-        <div class="callout-body"><strong>VRAM is the key number</strong>The GPU VRAM determines which models you can run. 8GB handles llama3-8b. 24GB+ opens up larger models when they get whitelisted. The top node on the network currently runs llama3-70b — that requires 48GB+ VRAM or a GPU+CPU split (which is very slow).</div>
+        <div class="callout-body"><strong>VRAM is the key number</strong>VRAM decides which whitelisted model fits. 8 GB is the published minimum for llama3-8b. Names such as llama3-70b and gpt-oss:120b need a much larger card. On a small card, load one model and keep its context on the GPU.</div>
       </div>
 
       <!-- HARDWARE CHECKER -->
@@ -430,7 +425,7 @@
         <button id="hwCheckBtn" onclick="runHardwareCheck()" style="background:var(--cyan);color:#000;border:none;border-radius:8px;padding:10px 22px;font-weight:700;font-size:14px;cursor:pointer">
           ⚡ Check My Hardware
         </button>
-        <div style="color:var(--muted);font-size:12px;margin-top:8px">Requires the Node Builder server running at localhost:8185. Checks GPU VRAM, RAM, CPU cores, and disk space.</div>
+        <div style="color:var(--muted);font-size:12px;margin-top:8px">This button only reaches a checker on this computer. The public site does not run it. The table above is the current hardware list.</div>
         <div id="hwCheckResults" style="display:none;margin-top:16px">
           <div id="hwCheckSummary" style="font-weight:700;font-size:14px;margin-bottom:12px"></div>
           <div id="hwCheckList" style="display:grid;gap:8px"></div>
@@ -449,7 +444,7 @@
       <div class="step-header">
         <div class="step-phase">Step 2</div>
         <div class="step-title">Operating System</div>
-        <div class="step-desc">Lightchain worker nodes are designed and tested on Ubuntu Linux. Ubuntu 22.04 LTS or newer is recommended.</div>
+        <div class="step-desc">The official Rails scripts are tested on Ubuntu 22.04 and 24.04. Another Ubuntu release only warns, and the script continues.</div>
       </div>
 
       <div class="callout tip">
@@ -473,7 +468,7 @@
           <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'lsb_release -a')">Copy</button></div>
           <div class="code-content"><pre>lsb_release -a</pre></div>
         </div>
-        <div style="font-size:13px;color:var(--muted)">You should see "Ubuntu 22.04" or higher in the output.</div>
+        <div style="font-size:13px;color:var(--muted)">Ubuntu 22.04 or 24.04 matches what the Rails scripts test. Another release can still run. The script warns and continues.</div>
       </div>
 
       <div class="step-nav">
@@ -488,12 +483,12 @@
       <div class="step-header">
         <div class="step-phase">Step 3</div>
         <div class="step-title">Prerequisites</div>
-        <div class="step-desc">Install these four things before touching the worker image. Every step in this guide assumes they're in place.</div>
+        <div class="step-desc">Install Docker, the NVIDIA driver, Foundry, and Ollama before the worker image. An independent worker does not use Redis.</div>
       </div>
 
       <div class="callout danger">
         <div class="callout-icon">🔐</div>
-        <div class="callout-body"><strong>Check your ISP first — Cox blocks Lightchain RPC</strong>Before setting up anything, verify your ISP doesn't block Lightchain. If you're on Cox or another blocking provider, you MUST run a VPN at all times or your node will appear offline to the network.</div>
+        <div class="callout-body"><strong>Confirm the RPC answers</strong>The protocol does not require a VPN. Run the curl below. A block number means this network can reach mainnet. If it times out, fix the path before you continue. A VPN is only a workaround when the provider blocks the RPC.</div>
       </div>
 
       <div class="card">
@@ -504,7 +499,7 @@
   --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
   https://rpc.mainnet.lightchain.ai</pre></div>
         </div>
-        <div style="font-size:13px;color:var(--muted)">If you see a block number in the response, you're fine. If it times out or errors — get a VPN before continuing. <strong style="color:var(--orange)">Mullvad VPN is recommended ($5/mo).</strong></div>
+        <div style="font-size:13px;color:var(--muted)">A hex block number means the RPC is reachable. A timeout means this network cannot reach it yet. A VPN is optional, and it is not a health check.</div>
       </div>
 
       <div class="card">
@@ -543,15 +538,8 @@ foundryup</pre></div>
       </div>
 
       <div class="card">
-        <div class="card-title">4. Install Redis</div>
-        <div style="font-size:14px;color:var(--muted);margin-bottom:12px">Redis is required by the worker. It must be running before the container starts.</div>
-        <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'sudo apt install redis-server -y\nsudo systemctl enable redis-server\nsudo systemctl start redis-server')">Copy</button></div>
-          <div class="code-content"><pre>sudo apt install redis-server -y
-sudo systemctl enable redis-server
-sudo systemctl start redis-server</pre></div>
-        </div>
-        <div style="font-size:13px;color:var(--muted);margin-top:8px">Verify: <code style="background:var(--code-bg);padding:2px 6px;border-radius:4px;color:var(--cyan)">sudo systemctl status redis-server</code> — should show "active (running)"</div>
+        <div class="card-title">4. Redis is not part of this setup</div>
+        <div style="font-size:14px;color:var(--muted);margin-bottom:12px">An independent worker uses the external profile: <code style="color:var(--cyan)">SORTITION_ENABLED=true</code> and the worker gateway. That profile does not use Redis. Redis is only for the direct profile, which is for Lightchain-operated nodes. Do not install Redis to make this worker healthy.</div>
       </div>
 
       <div class="step-nav">
@@ -606,13 +594,13 @@ cast wallet address --private-key "$WORKER_PRIVKEY"</pre></div>
       <div class="step-header">
         <div class="step-phase">Step 5</div>
         <div class="step-title">Resolve Contract Addresses</div>
-        <div class="step-desc">Pull the AIConfig and JobRegistry addresses from the on-chain WorkerRegistry. These get used in every Docker command that follows.</div>
+        <div class="step-desc">Pull AIConfig and JobRegistry from WorkerRegistry, then SessionManager from AIConfig. Sortition will not start without SessionManager.</div>
       </div>
 
       <div class="card">
         <div class="card-title">Set RPC and resolve addresses</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, `export RPC_URL=https://rpc.mainnet.lightchain.ai\nexport WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002\nexport AI_CONFIG_ADDRESS=$(cast call $WORKER_REGISTRY_ADDRESS \"aiConfig()(address)\" --rpc-url $RPC_URL)\nexport JOB_REGISTRY_ADDRESS=$(cast call $WORKER_REGISTRY_ADDRESS \"jobRegistry()(address)\" --rpc-url $RPC_URL)\n\necho \"AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS\"\necho \"JOB_REGISTRY_ADDRESS=$JOB_REGISTRY_ADDRESS\"`)">Copy</button></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
           <div class="code-content"><pre>export RPC_URL=https://rpc.mainnet.lightchain.ai
 export WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002
 
@@ -622,14 +610,19 @@ export AI_CONFIG_ADDRESS=$(cast call $WORKER_REGISTRY_ADDRESS \
 export JOB_REGISTRY_ADDRESS=$(cast call $WORKER_REGISTRY_ADDRESS \
   "jobRegistry()(address)" --rpc-url $RPC_URL)
 
+export SESSION_MANAGER_ADDRESS=$(cast call $AI_CONFIG_ADDRESS \
+  "getSessionManagerAddress()(address)" --rpc-url $RPC_URL)
+
 echo "AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS"
-echo "JOB_REGISTRY_ADDRESS=$JOB_REGISTRY_ADDRESS"</pre></div>
+echo "JOB_REGISTRY_ADDRESS=$JOB_REGISTRY_ADDRESS"
+echo "SESSION_MANAGER_ADDRESS=$SESSION_MANAGER_ADDRESS"
+</pre></div>
         </div>
       </div>
 
       <div class="callout tip">
         <div class="callout-icon">💡</div>
-        <div class="callout-body"><strong>Known mainnet addresses (for reference)</strong>AIConfig proxy: <code style="color:var(--cyan)">0x24D11533C354092ed6E18b964257819cE78Ce77D</code><br>JobRegistry proxy: <code style="color:var(--cyan)">0xfB15F90298e4CcD7106E76fFB5e520315cC42B0b</code><br>These can change after upgrades — always resolve live as shown above.</div>
+        <div class="callout-body"><strong>Known mainnet addresses (for reference)</strong>AIConfig proxy: <code style="color:var(--cyan)">0x24D11533C354092ed6E18b964257819cE78Ce77D</code><br>JobRegistry proxy: <code style="color:var(--cyan)">0xfB15F90298e4CcD7106E76fFB5e520315cC42B0b</code><br>SessionManager proxy: <code style="color:var(--cyan)">0xfFFCed75eF4Cdae0Cc33A27Bb46531B957a9f4e7</code><br>These can change after upgrades. Resolve them live with the commands above.</div>
       </div>
 
       <div class="step-nav">
@@ -670,14 +663,12 @@ ollama cp llama3:8b llama3-8b</pre></div>
 
       <div class="card">
         <div class="card-title">Optional: Add more models</div>
-        <div style="font-size:14px;color:var(--muted);margin-bottom:12px">These models are whitelisted on mainnet. More models = potentially more job types routed to your node.</div>
+        <div style="font-size:14px;color:var(--muted);margin-bottom:12px">Register only a name the chain has whitelisted and enabled. Older aliases that are not on the current whitelist will not match. Checked against the public model indexer on 16 Nov 2026.</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal — optional</span><button class="copy-btn" onclick="copyCode(this, 'ollama pull llama3.1:8b\nollama cp llama3.1:8b llama3.1-8b\n\nollama pull gemma2:9b\nollama cp gemma2:9b gemma2-9b')">Copy</button></div>
-          <div class="code-content"><pre>ollama pull llama3.1:8b
-ollama cp llama3.1:8b llama3.1-8b
-
-ollama pull gemma2:9b
-ollama cp gemma2:9b gemma2-9b</pre></div>
+          <div class="code-header"><span class="code-label">terminal — optional</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <div class="code-content"><pre>ollama pull gemma4:e2b
+ollama pull qwen3-vl:8b
+</pre></div>
         </div>
       </div>
 
@@ -708,8 +699,8 @@ ollama cp gemma2:9b gemma2-9b</pre></div>
       <div class="card">
         <div class="card-title">Pull the latest worker image</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'docker pull us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest')">Copy</button></div>
-          <div class="code-content"><pre>docker pull us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest</pre></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'docker pull registry.lightchain.ai/mainnet/worker:latest')">Copy</button></div>
+          <div class="code-content"><pre>docker pull registry.lightchain.ai/mainnet/worker:latest</pre></div>
         </div>
         <div style="font-size:13px;color:var(--muted);margin-top:8px">This takes a few minutes. Once done, your image is ready for the keystore and registration steps.</div>
       </div>
@@ -738,13 +729,13 @@ ollama cp gemma2:9b gemma2-9b</pre></div>
         <div class="card-title">Create keystore directory and import worker key</div>
         <div style="font-size:14px;color:var(--muted);margin-bottom:12px">Replace <code style="color:var(--orange);background:var(--code-bg);padding:2px 6px;border-radius:4px">&lt;YOUR_PASSWORD&gt;</code> with a strong password you'll remember — you'll need it every time the container starts.</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'mkdir -p ~/lightchain-worker/keys\n\ndocker run --rm \\\n  -v ~/lightchain-worker/keys:/data \\\n  --entrypoint /bin/lightchain-worker \\\n  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest \\\n  import-key \\\n  --private-key \"$WORKER_PRIVKEY\" \\\n  --password <YOUR_PASSWORD> \\\n  --output /data/eth-keystore')">Copy</button></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'mkdir -p ~/lightchain-worker/keys\n\ndocker run --rm \\\n  -v ~/lightchain-worker/keys:/data \\\n  --entrypoint /bin/lightchain-worker \\\n  registry.lightchain.ai/mainnet/worker:latest \\\n  import-key \\\n  --private-key \"$WORKER_PRIVKEY\" \\\n  --password <YOUR_PASSWORD> \\\n  --output /data/eth-keystore')">Copy</button></div>
           <div class="code-content"><pre>mkdir -p ~/lightchain-worker/keys
 
 docker run --rm \
   -v ~/lightchain-worker/keys:/data \
   --entrypoint /bin/lightchain-worker \
-  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest \
+  registry.lightchain.ai/mainnet/worker:latest \
   import-key \
   --private-key "$WORKER_PRIVKEY" \
   --password &lt;YOUR_PASSWORD&gt; \
@@ -756,7 +747,7 @@ docker run --rm \
       <div class="card">
         <div class="card-title">Generate ECDH encryption key</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, `docker run --rm \\\n  -v ~/lightchain-worker/keys:/data \\\n  -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \\\n  -e WORKER_KEYSTORE_PASSWORD=<YOUR_PASSWORD> \\\n  -e ENCRYPTION_KEYSTORE_PATH=/data/worker-encryption.key \\\n  -e RPC_URL=https://rpc.mainnet.lightchain.ai \\\n  -e CHAIN_ID=9200 \\\n  -e WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002 \\\n  -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \\\n  -e SUPPORTED_MODELS=llama3-8b \\\n  --entrypoint /bin/lightchain-worker \\\n  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest \\\n  keygen`)">Copy</button></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, `docker run --rm \\\n  -v ~/lightchain-worker/keys:/data \\\n  -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \\\n  -e WORKER_KEYSTORE_PASSWORD=<YOUR_PASSWORD> \\\n  -e ENCRYPTION_KEYSTORE_PATH=/data/worker-encryption.key \\\n  -e RPC_URL=https://rpc.mainnet.lightchain.ai \\\n  -e CHAIN_ID=9200 \\\n  -e WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002 \\\n  -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \\\n  -e SUPPORTED_MODELS=llama3-8b \\\n  --entrypoint /bin/lightchain-worker \\\n  registry.lightchain.ai/mainnet/worker:latest \\\n  keygen`)">Copy</button></div>
           <div class="code-content"><pre>docker run --rm \
   -v ~/lightchain-worker/keys:/data \
   -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \
@@ -768,7 +759,7 @@ docker run --rm \
   -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \
   -e SUPPORTED_MODELS=llama3-8b \
   --entrypoint /bin/lightchain-worker \
-  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest \
+  registry.lightchain.ai/mainnet/worker:latest \
   keygen</pre></div>
         </div>
       </div>
@@ -790,18 +781,18 @@ docker run --rm \
 
       <div class="callout tip">
         <div class="callout-icon">💡</div>
-        <div class="callout-body"><strong>Send 50,005 LCAI</strong>50,000 for the stake + ~5 for gas over the node's lifetime. The extra few LCAI gives a comfortable buffer for registration and job transactions.</div>
+        <div class="callout-body"><strong>Send 50,051 LCAI</strong>50,000 locks as the minimum stake. About 50 LCAI stays liquid for claim, ack, blob, and completion gas, plus a little because register itself spends gas. The official run-node page uses 50,051.</div>
       </div>
 
       <div class="card">
         <div class="card-title">Send LCAI from your funder wallet</div>
         <div style="font-size:14px;color:var(--muted);margin-bottom:12px">Replace <code style="color:var(--orange);background:var(--code-bg);padding:2px 6px;border-radius:4px">&lt;FUNDER_PRIVKEY&gt;</code> with your main wallet's private key.</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'export FUNDER_PRIVKEY=0x...\n\ncast send \"$WORKER_ADDR\" \\\n  --value 50005ether \\\n  --rpc-url \"$RPC_URL\" \\\n  --private-key \"$FUNDER_PRIVKEY\"\n\n# Verify the worker received the funds:\ncast balance \"$WORKER_ADDR\" --rpc-url \"$RPC_URL\" | awk \'{printf \"%.4f LCAI\\n\", $1/1e18}\'')">Copy</button></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'export FUNDER_PRIVKEY=0x...\n\ncast send \"$WORKER_ADDR\" \\\n  --value 50051ether \\\n  --rpc-url \"$RPC_URL\" \\\n  --private-key \"$FUNDER_PRIVKEY\"\n\n# Verify the worker received the funds:\ncast balance \"$WORKER_ADDR\" --rpc-url \"$RPC_URL\" | awk \'{printf \"%.4f LCAI\\n\", $1/1e18}\'')">Copy</button></div>
           <div class="code-content"><pre>export FUNDER_PRIVKEY=0x...
 
 cast send "$WORKER_ADDR" \
-  --value 50005ether \
+  --value 50051ether \
   --rpc-url "$RPC_URL" \
   --private-key "$FUNDER_PRIVKEY"
 
@@ -813,7 +804,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
 
       <div class="callout warn">
         <div class="callout-icon">⚠️</div>
-        <div class="callout-body"><strong>Rewards land in the worker wallet, not your main wallet</strong>Job earnings are credited to <code style="color:var(--orange)">$WORKER_ADDR</code>. They don't auto-forward anywhere. You'll need to manually sweep earnings to your main wallet periodically. Your stake (50,000 LCAI) stays locked until you deregister.</div>
+        <div class="callout-body"><strong>Rewards stay with the worker until you withdraw them</strong>The worker share is paid when the job is released after the dispute window. On 16 Nov 2026 that window was 24 hours (<code style="color:var(--orange)">getDisputeWindow()</code> = 86400). Nothing is forwarded to the funder wallet. The 50,000 LCAI stake stays locked until deregister succeeds.</div>
       </div>
 
       <div class="step-nav">
@@ -833,13 +824,13 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
 
       <div class="callout danger">
         <div class="callout-icon">🚨</div>
-        <div class="callout-body"><strong>Once registered, do NOT deregister to escape problems</strong>Deregistering triggers a ~7,500 LCAI slash penalty if you have pending jobs. If you run into issues after registering, troubleshoot first — do not deregister. Ask for help in Discord or use the AI assistant in this wizard.</div>
+        <div class="callout-body"><strong>Deregister does not slash you for having jobs</strong>It reverts with ActiveJobsExist until every completed job is past the dispute window and released. Troubleshoot first. Stopping the container does not clear a job that is already acknowledged on chain.</div>
       </div>
 
       <div class="card">
         <div class="card-title">Register the worker</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, `docker run --rm \\\n  -v ~/lightchain-worker/keys:/data \\\n  -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \\\n  -e WORKER_KEYSTORE_PASSWORD=<YOUR_PASSWORD> \\\n  -e ENCRYPTION_KEYSTORE_PATH=/data/worker-encryption.key \\\n  -e RPC_URL=https://rpc.mainnet.lightchain.ai \\\n  -e CHAIN_ID=9200 \\\n  -e WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002 \\\n  -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \\\n  -e SUPPORTED_MODELS=llama3-8b \\\n  --entrypoint /bin/lightchain-worker \\\n  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest \\\n  register`)">Copy</button></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, `docker run --rm \\\n  -v ~/lightchain-worker/keys:/data \\\n  -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \\\n  -e WORKER_KEYSTORE_PASSWORD=<YOUR_PASSWORD> \\\n  -e ENCRYPTION_KEYSTORE_PATH=/data/worker-encryption.key \\\n  -e RPC_URL=https://rpc.mainnet.lightchain.ai \\\n  -e CHAIN_ID=9200 \\\n  -e WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002 \\\n  -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \\\n  -e SUPPORTED_MODELS=llama3-8b \\\n  --entrypoint /bin/lightchain-worker \\\n  registry.lightchain.ai/mainnet/worker:latest \\\n  register`)">Copy</button></div>
           <div class="code-content"><pre>docker run --rm \
   -v ~/lightchain-worker/keys:/data \
   -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \
@@ -851,7 +842,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
   -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \
   -e SUPPORTED_MODELS=llama3-8b \
   --entrypoint /bin/lightchain-worker \
-  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest \
+  registry.lightchain.ai/mainnet/worker:latest \
   register</pre></div>
         </div>
       </div>
@@ -873,15 +864,15 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
       <div class="step-header">
         <div class="step-phase">Step 11</div>
         <div class="step-title">Run the Worker</div>
-        <div class="step-desc">Start the long-running container. This connects your node to the worker gateway and begins receiving jobs.</div>
+        <div class="step-desc">Start the long-running container. This block matches the official run-node page as of 16 Nov 2026, including --user root. SORTITION_ENABLED must be true. The chain assigns sessions. The gateway only streams answers, heartbeats, and drain. A quiet log is normal until this worker wins a draw.</div>
       </div>
 
       <div class="card">
         <div class="card-title">Launch the worker container</div>
         <div class="code-block">
-          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, `docker run -d \\\n  --restart always \\\n  --user root \\\n  --name lightchain-worker \\\n  --add-host=host.docker.internal:host-gateway \\\n  -v ~/lightchain-worker/keys:/data \\\n  -e WORKER_KEYSTORE_PATH=/data/eth-keystore/$(ls ~/lightchain-worker/keys/eth-keystore/ | head -1) \\\n  -e WORKER_KEYSTORE_PASSWORD=<YOUR_PASSWORD> \\\n  -e ENCRYPTION_KEYSTORE_PATH=/data/worker-encryption.key \\\n  -e RPC_URL=https://rpc.mainnet.lightchain.ai \\\n  -e CHAIN_ID=9200 \\\n  -e WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002 \\\n  -e AI_CONFIG_ADDRESS=$AI_CONFIG_ADDRESS \\\n  -e JOB_REGISTRY_ADDRESS=$JOB_REGISTRY_ADDRESS \\\n  -e SUPPORTED_MODELS=llama3-8b \\\n  -e OLLAMA_URL=http://host.docker.internal:11434 \\\n  -e BEACON_API_URL=https://beacon.mainnet.lightchain.ai \\\n  -e BLOB_MODE=beacon \\\n  -e SESSION_KEY_FILE=/data/session-keys.enc \\\n  -e WORKER_GATEWAY_URL=https://worker-gateway.mainnet.lightchain.ai \\\n  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest`)">Copy</button></div>
+          <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
           <div class="code-content"><pre>docker run -d \
-  --restart always \
+  --restart unless-stopped \
   --user root \
   --name lightchain-worker \
   --add-host=host.docker.internal:host-gateway \
@@ -899,13 +890,19 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
   -e BEACON_API_URL=https://beacon.mainnet.lightchain.ai \
   -e BLOB_MODE=beacon \
   -e SESSION_KEY_FILE=/data/session-keys.enc \
+  -e RELEASE_STATE_PATH=/data/release_state.json \
+  -e SORTITION_ENABLED=true \
+  -e SESSION_MANAGER_ADDRESS=$SESSION_MANAGER_ADDRESS \
+  -e SORTITION_STATE_DIR=/data/sortition-state \
+  -e SHUTDOWN_TIMEOUT=240s \
   -e WORKER_GATEWAY_URL=https://worker-gateway.mainnet.lightchain.ai \
-  us-central1-docker.pkg.dev/lightchain/lightchain-mainnet-public-docker/worker:latest</pre></div>
+  registry.lightchain.ai/mainnet/worker:latest
+</pre></div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">Watch the logs — look for these 6 lines</div>
+        <div class="card-title">Watch the logs — external profile</div>
         <div class="code-block">
           <div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'docker logs lightchain-worker --tail 30')">Copy</button></div>
           <div class="code-content"><pre>docker logs lightchain-worker --tail 30</pre></div>
@@ -913,13 +910,13 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
         <div style="margin-top:12px;">
           <div class="callout success">
             <div class="callout-icon">✅</div>
-            <div class="callout-body"><strong>These 6 lines = you're fully online</strong>
-              <code style="display:block;margin-top:6px;font-family:monospace;font-size:12px;color:var(--green)">worker registration validated — on-chain key matches local key</code>
-              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">blob mode: eip-4844 (beacon)</code>
+            <div class="callout-body"><strong>These lines mean the external profile is up</strong>
+              <code style="display:block;margin-top:6px;font-family:monospace;font-size:12px;color:var(--green)">external worker profile: sortition assignment with gateway egress</code>
+              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">worker registration validated</code>
               <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">authenticated with worker-gateway</code>
-              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">worker service initialized (gateway mode)</code>
-              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">worker sidecar running (gateway mode)</code>
-              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">websocket connected to gateway</code>
+              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">sortition mode</code>
+              <code style="display:block;font-family:monospace;font-size:12px;color:var(--green)">gateway stream connected</code>
+              <span style="display:block;margin-top:8px">Gateway mode without sortition is the old profile. That profile is given no jobs. There is no job line until this worker wins a session.</span>
             </div>
           </div>
         </div>
@@ -930,11 +927,11 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
         <div class="checklist">
           <li>
             <div class="check-box checked">✓</div>
-            <div class="check-text"><strong>WebSocket disconnected + reconnected every ~1 hour</strong><small>Normal auth token refresh. Reconnects within 1-2 seconds automatically.</small></div>
+            <div class="check-text"><strong>Quiet logs between sessions</strong><small>Normal. The worker is waiting to win a draw. Look for claimed session request, then stage 1, then job completed.</small></div>
           </li>
           <li>
             <div class="check-box checked">✓</div>
-            <div class="check-text"><strong>worker_ollama_up=0</strong><small>Cosmetic display issue confirmed by the Lightchain team. Your node is still serving jobs.</small></div>
+            <div class="check-text"><strong>A gateway reconnect</strong><small>The gateway carries streaming, heartbeats, and drain. A reconnect by itself is not a failed job. Confirm the RPC and Ollama are still up.</small></div>
           </li>
           <li>
             <div class="check-box checked">✓</div>
@@ -942,7 +939,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           </li>
           <li>
             <div class="check-box checked">✓</div>
-            <div class="check-text"><strong>reconciler: pass complete — every hour</strong><small>Normal chain sync. Healthy sign.</small></div>
+            <div class="check-text"><strong>Release lines after a finished job</strong><small>Pay waits out the dispute window, 24 hours on the 16 Nov 2026 read. A release line is the payout step, not a new job.</small></div>
           </li>
           <li>
             <div class="check-box checked">✓</div>
@@ -972,7 +969,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <span>🎯 Compare with Reference Node</span>
           <span id="compareBadge" style="font-size:12px;color:var(--muted);font-weight:400">One button · differences only</span>
         </div>
-        <p style="color:var(--muted);font-size:13px;margin-bottom:14px;line-height:1.7">We scan Docker, Ollama, VPN, config, logs, and on-chain status on <strong style="color:#fff">this computer</strong>. You only see what doesn't match a verified earning mainnet node — plus how to fix each item.</p>
+        <p style="color:var(--muted);font-size:13px;margin-bottom:14px;line-height:1.7">The one-click scanner scored a June 2026 gateway profile: Redis, a VPN, and the old image. That profile is not a current sortition worker. This public page does not run the scanner. Use the checks below. Nothing you type is uploaded.</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px">
           <input id="compareWorkerAddr" type="text" placeholder="Worker address (optional — auto-detected from logs)" spellcheck="false"
             style="flex:1;min-width:220px;background:rgba(0,0,0,0.35);border:1px solid rgba(0,212,255,0.25);border-radius:8px;padding:10px 14px;color:#fff;font-family:monospace;font-size:13px">
@@ -993,9 +990,9 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
       <div class="card" style="border-color:rgba(0,212,255,0.3);margin-bottom:24px" id="liveCheckCard">
         <div class="card-title" style="display:flex;align-items:center;justify-content:space-between">
           <span>⚡ Live Health Check</span>
-          <span id="liveCheckBadge" style="font-size:12px;color:var(--muted);font-weight:400">Requires local server running</span>
+          <span id="liveCheckBadge" style="font-size:12px;color:var(--muted);font-weight:400">Manual checks below</span>
         </div>
-        <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Runs all 10 checks on your machine instantly — no copy-paste needed. Requires the Node Builder server to be running at localhost:8185.</p>
+        <p style="color:var(--muted);font-size:13px;margin-bottom:16px">The button only talks to a checker on this computer at localhost:8185. This site does not run that checker. The ten manual checks below are the current list.</p>
         <button id="liveCheckBtn" onclick="runLiveCheck()" style="background:var(--cyan);color:#000;border:none;border-radius:8px;padding:10px 24px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px">
           ▶ Run All Checks Now
         </button>
@@ -1016,13 +1013,13 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <div class="health-num">Check 2 — Logs</div>
           <div class="health-title">Recent worker activity</div>
           <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'docker logs lightchain-worker --tail 50')">Copy</button></div><div class="code-content"><pre>docker logs lightchain-worker --tail 50</pre></div></div>
-          <div class="health-normal">Expected: <strong>Regular reconciler + auth lines, no ERROR panics</strong></div>
+          <div class="health-normal">Expected: <strong>external worker profile, then quiet until claimed session request</strong></div>
         </div>
         <div class="health-item">
-          <div class="health-num">Check 3 — Redis</div>
-          <div class="health-title">Is Redis running?</div>
-          <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'sudo systemctl status redis-server --no-pager')">Copy</button></div><div class="code-content"><pre>sudo systemctl status redis-server --no-pager</pre></div></div>
-          <div class="health-normal">Expected: <strong>Active (running)</strong></div>
+          <div class="health-num">Check 3 — Sortition</div>
+          <div class="health-title">Is the external profile set?</div>
+          <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker inspect lightchain-worker --format '{{range .Config.Env}}{{println .}}{{end}}' | grep -E 'SORTITION_ENABLED|SESSION_MANAGER'</pre></div></div>
+          <div class="health-normal">Expected: <strong>SORTITION_ENABLED=true and a SessionManager address. Redis is not required.</strong></div>
         </div>
         <div class="health-item">
           <div class="health-num">Check 4 — Ollama models</div>
@@ -1037,10 +1034,12 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <div class="health-normal">Expected: <strong>JSON with models list — if error, Ollama is down</strong></div>
         </div>
         <div class="health-item">
-          <div class="health-num">Check 6 — VPN</div>
-          <div class="health-title">Is Mullvad connected?</div>
-          <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'mullvad status')">Copy</button></div><div class="code-content"><pre>mullvad status</pre></div></div>
-          <div class="health-normal">Expected: <strong>Connected</strong> (required if your ISP blocks Lightchain)</div>
+          <div class="health-num">Check 6 — RPC</div>
+          <div class="health-title">Can this machine reach mainnet?</div>
+          <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>curl -s -X POST -H 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  https://rpc.mainnet.lightchain.ai</pre></div></div>
+          <div class="health-normal">Expected: <strong>A hex block number. A VPN is not required.</strong></div>
         </div>
         <div class="health-item">
           <div class="health-num">Check 7 — GPU</div>
@@ -1052,7 +1051,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <div class="health-num">Check 8 — Disk space</div>
           <div class="health-title">Is disk getting full?</div>
           <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this, 'df -h ~')">Copy</button></div><div class="code-content"><pre>df -h ~</pre></div></div>
-          <div class="health-normal">Expected: <strong>At least 20GB free — models + Docker images are large</strong></div>
+          <div class="health-normal">Expected: <strong>Tens of GB free. Models are several GB each. The Rails script refuses under 60 GB free on / (20 GB only with --models-disk).</strong></div>
         </div>
         <div class="health-item">
           <div class="health-num">Check 9 — Container resources</div>
@@ -1062,11 +1061,18 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
         </div>
         <div class="health-item">
           <div class="health-num">Check 10 — On-chain status</div>
-          <div class="health-title">Live jobs, earnings, offenses</div>
-          <div class="code-block"><div class="code-header"><span class="code-label">terminal — replace address</span><button class="copy-btn" onclick="copyCode(this, `curl -s -X POST -H 'content-type: application/json' \\\n  --data '{\"query\":\"{ workers(where:{id:\\\\\"0xYOUR_WORKER_ADDRESS\\\\\"}){ id status active_job_count jobs_completed total_earned offense_count stake } }\"}' \\\n  https://workers-api.mainnet.lightchain.ai/graphql | python3 -m json.tool`)">Copy</button></div><div class="code-content"><pre>curl -s -X POST -H 'content-type: application/json' \
-  --data '{"query":"{ workers(where:{id:\"0xYOUR_WORKER_ADDRESS\"}){ id status active_job_count jobs_completed total_earned offense_count stake } }"}' \
-  https://workers-api.mainnet.lightchain.ai/graphql | python3 -m json.tool</pre></div></div>
-          <div class="health-normal">Expected: <strong>status: active, offense_count: 0, stake: 50000000...</strong></div>
+          <div class="health-title">Registration, stake, and slash rates</div>
+          <div class="code-block"><div class="code-header"><span class="code-label">terminal — replace address</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>export WORKER_ADDR=0xYOUR_WORKER_ADDRESS
+cast call $WORKER_REGISTRY_ADDRESS "isWorkerRegistered(address)(bool)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $WORKER_REGISTRY_ADDRESS "getWorkerStake(address)(uint256)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $WORKER_REGISTRY_ADDRESS "isWorkerSuspended(address)(bool)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $WORKER_REGISTRY_ADDRESS "getOffenseCount(address)(uint256)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getTimeoutSlashBps()(uint256)" --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getCompletionTimeoutSlashBps()(uint256)" --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getDisputeSlashBps()(uint256)" --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getSuspensionThreshold()(uint256)" --rpc-url $RPC_URL
+</pre></div></div>
+          <div class="health-normal">Expected: <strong>registered, not suspended, stake at least 50000000000000000000000 wei (50,000 LCAI). An offense count above zero does not suspend the worker while the threshold is 1000000. On 16 Nov 2026 all three slash rates were 0.</strong></div>
         </div>
       </div>
 
@@ -1107,14 +1113,16 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <a href="https://github.com/lightchain-protocol/lcai-smart-contract" target="_blank" class="link-card"><div class="link-card-label">GitHub</div><div class="link-card-title">Smart Contracts</div><div class="link-card-url">lcai-smart-contract</div></a>
           <a href="https://github.com/lightchain-protocol/chain-node" target="_blank" class="link-card"><div class="link-card-label">GitHub</div><div class="link-card-title">Chain Node</div><div class="link-card-url">chain-node</div></a>
           <a href="https://github.com/lightchain-protocol/lcai-dApp-hub" target="_blank" class="link-card"><div class="link-card-label">GitHub</div><div class="link-card-title">dApp Hub</div><div class="link-card-url">lcai-dApp-hub</div></a>
+          <a href="https://github.com/lightchain-protocol/lightchain-worker" target="_blank" class="link-card"><div class="link-card-label">GitHub</div><div class="link-card-title">Worker</div><div class="link-card-url">lightchain-worker</div></a>
+          <a href="https://github.com/lightchain-protocol/lightchain-rails" target="_blank" class="link-card"><div class="link-card-label">GitHub</div><div class="link-card-title">Rails installer</div><div class="link-card-url">lightchain-rails</div></a>
         </div>
       </div>
 
       <div class="card" style="border-color:rgba(0,212,255,0.35);background:rgba(0,212,255,0.04)">
         <div class="card-title">⬇️ Node Template Kit</div>
-        <p style="color:var(--muted);margin-bottom:16px">Download pre-filled config files. All mainnet settings are already correct — just fill in your 3 personal values and run the script. No copy-paste errors, no guessing.</p>
+        <p style="color:var(--muted);margin-bottom:16px">A checklist and two scripts. They do not contain a key, and they do not start the container. Use Step 11 for the container.</p>
         <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(0,212,255,0.15);border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;line-height:1.8">
-          <div><span style="color:var(--cyan)">📄 .env.template</span> <span style="color:var(--muted)">— All configs pre-filled, 3 blanks for your keys</span></div>
+          <div><span style="color:var(--cyan)">📄 .env.template</span> <span style="color:var(--muted)">— RPC and model name. No private key.</span></div>
           <div><span style="color:var(--cyan)">🚀 run-worker.sh</span> <span style="color:var(--muted)">— One script to launch your node</span></div>
           <div><span style="color:var(--cyan)">✅ setup-check.sh</span> <span style="color:var(--muted)">— Prerequisite checker before you start</span></div>
         </div>
@@ -1132,6 +1140,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <div style="color:var(--muted)">AIConfig (proxy) <span style="color:var(--cyan)">0x24D11533C354092ed6E18b964257819cE78Ce77D</span></div>
           <div style="color:var(--muted)">JobRegistry (proxy) <span style="color:var(--cyan)">0xfB15F90298e4CcD7106E76fFB5e520315cC42B0b</span></div>
           <div style="color:var(--muted)">RPC <span style="color:var(--cyan)">https://rpc.mainnet.lightchain.ai</span></div>
+          <div style="color:var(--muted)">SessionManager (proxy) <span style="color:var(--cyan)">0xfFFCed75eF4Cdae0Cc33A27Bb46531B957a9f4e7</span></div>
           <div style="color:var(--muted)">Chain ID <span style="color:var(--cyan)">9200</span></div>
         </div>
       </div>
@@ -1161,13 +1170,13 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
       </div>
 
       <div class="card">
-        <div class="card-title">💰 Do I really need 50,001 LCAI just to start?</div>
-        <p style="color:var(--muted);line-height:1.8">Yes — that's your stake, which is a security deposit that proves you're a serious operator. You get it back when you stop running the node. The 1 extra LCAI (above 50,000) is just to satisfy the minimum. You keep ownership of it the whole time; it's just locked while you're registered.</p>
+        <div class="card-title">💰 How much LCAI do I need to start?</div>
+        <p style="color:var(--muted);line-height:1.8">Fund the new worker wallet with 50,051 LCAI. Registration locks 50,000. About 50 stays liquid for gas. You get the locked stake back when deregister succeeds, after completed jobs pass the dispute window. Testnet Rails uses 5,000 LCAI-t plus about 50 LCAI-t for gas.</p>
       </div>
 
       <div class="card">
         <div class="card-title">💻 What kind of computer do I need?</div>
-        <p style="color:var(--muted);line-height:1.8">A gaming PC with an NVIDIA GPU (RTX 3080 or better), at least 32GB of RAM, and 100GB+ of free storage. MacBooks don't work. AMD graphics cards don't work. Most modern gaming desktops qualify — if you bought it for gaming in the last 3-4 years, there's a good chance it'll work. The GPU does the AI processing, so that's the most important part.</p>
+        <p style="color:var(--muted);line-height:1.8">An NVIDIA GPU, 16 GB of RAM, and room for the model. The official run-node table says 8 GB VRAM minimum and 16 GB RAM minimum. AMD GPUs are not in the worker install path. The Rails script stops with no NVIDIA card, under 16 GB of RAM, or under 60 GB free on /. Under 8 GB of VRAM it only warns.</p>
       </div>
 
       <div class="card">
@@ -1182,7 +1191,7 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
 
       <div class="card">
         <div class="card-title">🦙 What is Ollama?</div>
-        <p style="color:var(--muted);line-height:1.8">Ollama is the software that runs the AI model (llama3) on your computer. When a job comes in from the network, Ollama processes it using your GPU. Think of it as a mini ChatGPT running locally on your machine. You install it, pull the model, and your node uses it to answer AI requests and earn LCAI.</p>
+        <p style="color:var(--muted);line-height:1.8">Ollama runs the model on your GPU. The worker calls it on this machine. The chain name llama3-8b is Ollama's llama3:8b, copied to that dash name. Other whitelisted names use the tag as written.</p>
       </div>
 
       <div class="card">
@@ -1192,47 +1201,47 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
 
       <div class="card">
         <div class="card-title">🏦 What is staking?</div>
-        <p style="color:var(--muted);line-height:1.8">Staking means depositing LCAI as a security deposit when you register your node. This 50,001 LCAI stays locked in the contract while your node is active. You're not spending it — it's still yours. You get it back when you officially stop running the node (deregister). The stake exists so operators have skin in the game and behave reliably.</p>
+        <p style="color:var(--muted);line-height:1.8">Staking locks 50,000 LCAI in WorkerRegistry while the worker is registered. It is collateral, not a yield product. Deregister returns what remains after any slash. On 16 Nov 2026 the timeout, completion, and dispute slash rates were all 0.</p>
       </div>
 
       <div class="card" style="border-color:rgba(255,80,80,0.3)">
         <div class="card-title">⚠️ What is slashing? Can I lose my money?</div>
-        <p style="color:var(--muted);line-height:1.8">Slashing means losing part of your stake as a penalty — approximately 7,500 LCAI. This happens if you deregister your node while it still has pending jobs. The fix is simple: <strong>never deregister suddenly</strong>. If something goes wrong, restart the Docker container first. Only deregister when you're sure there are no pending jobs. The slash is rare and entirely avoidable with careful operation.</p>
+        <p style="color:var(--muted);line-height:1.8">Slashing means the contract takes part of the stake. Deregister does not do that. It reverts until jobs are released. Timeouts and lost disputes can slash, but on 16 Nov 2026 those three rates were 0, so no LCAI moved. An offense is still recorded. Automatic suspension is off on mainnet while the threshold is 1,000,000. Read the rates again before you rely on zero. The documented defaults, if the rates are turned back on, are 1,000 LCAI for a job that was never started and 2,500 LCAI for a job that was acknowledged and never finished.</p>
       </div>
 
       <div class="card">
         <div class="card-title">⏰ Do I need to keep my computer on 24/7?</div>
-        <p style="color:var(--muted);line-height:1.8">Ideally yes — your node only earns when it's online and available. Downtime means missed jobs. Two things help: a UPS (uninterruptible power supply, about $60-150) protects you during power outages, and a phone hotspot gives you backup internet if your ISP goes down. Your node can come back online after being off without losing your stake — you just don't earn while it's offline.</p>
+        <p style="color:var(--muted);line-height:1.8">It earns only while it can claim and finish jobs. Stake stays locked while you are offline. Jobs already claimed still target this worker. If they miss the deadline, that records an offense even while slash rates are 0. A UPS covers a short power cut. Use docker stop -t 300 so a v0.0.5 or newer image can finish the job it is running.</p>
       </div>
 
       <div class="card">
         <div class="card-title">💵 How much can I earn?</div>
-        <p style="color:var(--muted);line-height:1.8">Each completed job pays approximately 0.016 LCAI to your node. How many jobs you get depends on your stake (more stake = higher routing priority), network traffic, and uptime. The network is still young — check <a href="https://workers.lightchain.ai" target="_blank" style="color:var(--accent)">workers.lightchain.ai</a> for the live node count. Job volume will increase as more dApps launch on Lightchain. Right now is early-adopter territory: low competition, high future upside.</p>
+        <p style="color:var(--muted);line-height:1.8">The fee depends on the model. On 16 Nov 2026 llama3-8b, gemma4:e2b, and qwen3-vl:8b were 0.02 LCAI. The worker share was 80 percent, about 0.016 LCAI, paid after the dispute window. The protocol share was 15 percent and the pool 5 percent. Sortition weights eligible workers by stake and reputation, then widens the set every block until someone claims. Minimum stake can still win. Extra stake is not a guaranteed share of every job.</p>
       </div>
 
       <div class="card">
         <div class="card-title">🔒 Is it safe? Will this expose my computer to hackers?</div>
-        <p style="color:var(--muted);line-height:1.8">The node runs inside Docker (isolated) and only talks to official Lightchain endpoints — it doesn't open any ports to the internet on its own. Your worker private key is used only for signing transactions, not for accessing your main wallet. Using a VPN as recommended adds another layer. Keep your Ubuntu system updated, don't run random scripts from strangers, and you're fine.</p>
+        <p style="color:var(--muted);line-height:1.8">The Docker worker makes outbound calls to the RPC, the beacon, Ollama on this machine, and the worker gateway. It does not need an open inbound port. The worker key should hold only the stake and gas, never the funder key. A VPN is not part of the setup. Keep Ubuntu updated, and do not run a script you have not read.</p>
       </div>
 
       <div class="card">
         <div class="card-title">🔍 What if I get scary-looking errors in the logs?</div>
-        <p style="color:var(--muted);line-height:1.8">Most things that look like errors are actually normal. "WebSocket EOF" every hour is the auth token refreshing — completely expected. "worker_ollama_up=0" is cosmetic and doesn't affect jobs. "batch release succeeded" is actually great news (payouts processing). If you're not sure, paste the log line into the AI assistant and ask — it knows the difference between real errors and normal noise.</p>
+        <p style="color:var(--muted);line-height:1.8">A quiet log is normal until this worker wins a session. claimed session request, stage 1, and job completed are the job lines. A release line is the payout after the dispute window. An empty answer, including thinking with no visible text, is a failed job. The history page can still say Pending after the chain has already closed it.</p>
       </div>
 
       <div class="card">
         <div class="card-title">👛 What's the difference between the worker wallet and my main wallet?</div>
-        <p style="color:var(--muted);line-height:1.8">You use two completely separate wallets. Your <strong>funder wallet</strong> (your main wallet) holds your LCAI and sends the 50,001 stake to get the node registered. Your <strong>worker wallet</strong> is a brand new wallet you generate just for the node — it only needs a small amount of LCAI for gas fees. This way your main funds are never at risk even if something goes wrong with the node config.</p>
+        <p style="color:var(--muted);line-height:1.8">The funder wallet sends 50,051 LCAI to a brand-new worker wallet. Registration locks 50,000 of that. The worker wallet also pays gas and later holds rewards. Do not reuse the funder key as the worker key. The worker key sits next to its keystore password.</p>
       </div>
 
       <div class="card">
         <div class="card-title">🌐 What is a VPN and why might I need one?</div>
-        <p style="color:var(--muted);line-height:1.8">A VPN routes your internet traffic through a different server, which bypasses blocks your internet provider might have in place. Some ISPs (Cox is a known one) block the connections your node needs to reach the Lightchain network. If your setup commands keep timing out or failing to connect, try Mullvad VPN first — connect it before starting your node. Not everyone needs it, but it's worth having ready.</p>
+        <p style="color:var(--muted);line-height:1.8">A VPN is not required. If the RPC curl in Step 3 times out, the provider or the route is blocking it, and a VPN is one workaround. Do not treat a missing VPN as a failed node.</p>
       </div>
 
       <div class="card">
         <div class="card-title">🎮 What is VRAM and how do I know if I have enough?</div>
-        <p style="color:var(--muted);line-height:1.8">VRAM is your GPU's dedicated memory — separate from your regular RAM. The AI model (llama3) needs about 5GB of it to run. To check how much you have, open a terminal and type: <code style="color:var(--cyan)">nvidia-smi</code>. Look for the memory line (e.g. "8192 MiB"). If you have 8GB or more, you're fine. If you have other GPU-heavy apps running (like image generation software), you may need to close them to free up VRAM.</p>
+        <p style="color:var(--muted);line-height:1.8">VRAM is the GPU's own memory. <code style="color:var(--cyan)">nvidia-smi</code> prints it. 8 GB is the published minimum for llama3-8b. A small card should run one model with the context on the GPU. If the context spills to system RAM, the job can miss the 120 second completion limit.</p>
       </div>
 
       <div class="callout tip">
@@ -1264,13 +1273,14 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
         <a href="#ts-slash" style="background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 14px;color:var(--muted);text-decoration:none;font-size:13px">⚠️ Slash / stake</a>
         <a href="#ts-emergency" style="background:var(--cyan);border:1px solid var(--cyan);border-radius:20px;padding:7px 14px;color:#000;text-decoration:none;font-size:13px;font-weight:700">🚨 Emergency restart</a>
         <a href="#ts-deregbug" style="background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 14px;color:var(--muted);text-decoration:none;font-size:13px">🔴 Status stuck as "deregistered"</a>
-        <a href="#ts-gemmabug" style="background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 14px;color:var(--muted);text-decoration:none;font-size:13px">⛔ gemma4:e2b fails to register</a>
+        <a href="#ts-stuck" style="background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 14px;color:var(--muted);text-decoration:none;font-size:13px">⏱ Stuck acknowledged job</a>
+        <a href="#ts-gemmabug" style="background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 14px;color:var(--muted);text-decoration:none;font-size:13px">✅ gemma4:e2b is allowed</a>
       </div>
 
       <!-- REBOOT -->
       <div class="card" id="ts-reboot">
         <div class="card-title">⚡ After reboot or power loss — node not coming back</div>
-        <p style="color:var(--muted);line-height:1.8;margin-bottom:16px">This is the #1 issue for running operators. The container may restart, but if Ollama isn't running or VPN isn't connected, jobs silently stop. Here's the one-time fix that makes your node bulletproof after any reboot:</p>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:16px">Docker and Ollama have to come back before the worker can finish a job. A VPN is not part of this. Restarting the container does not finish a job that is already acknowledged on chain.</p>
 
         <div class="callout tip" style="margin-bottom:16px">
           <div class="callout-icon">1</div>
@@ -1288,18 +1298,11 @@ cast balance "$WORKER_ADDR" --rpc-url "$RPC_URL" \
           <div class="callout-icon">3</div>
           <div class="callout-body"><strong>Set worker container to auto-restart</strong></div>
         </div>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker update --restart unless-stopped lcai-worker</pre></div></div>
-
-        <div class="callout tip" style="margin-bottom:16px;margin-top:16px">
-          <div class="callout-icon">4</div>
-          <div class="callout-body"><strong>Set Mullvad VPN to auto-connect on startup</strong></div>
-        </div>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>mullvad auto-connect set on
-mullvad connect</pre></div></div>
+        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker update --restart unless-stopped lightchain-worker</pre></div></div>
 
         <div class="callout success" style="margin-top:16px">
           <div class="callout-icon">✓</div>
-          <div class="callout-body">After these four steps, your node will survive any power outage or reboot automatically — Docker starts, Ollama starts, VPN connects, container restarts. No manual intervention needed.</div>
+          <div class="callout-body">Docker, Ollama, and the worker container then start on boot. Pull <code style="color:var(--cyan)">registry.lightchain.ai/mainnet/worker:latest</code> and use an image from v0.0.5 on, so <code style="color:var(--cyan)">docker stop -t 300</code> can let a running job finish. An older image ends that job on stop.</div>
         </div>
       </div>
 
@@ -1310,16 +1313,17 @@ mullvad connect</pre></div></div>
 
         <div style="display:flex;flex-direction:column;gap:12px">
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:14px">
-            <div style="font-weight:700;margin-bottom:6px;color:var(--cyan)">① Is websocket connected?</div>
-            <p style="color:var(--muted);font-size:13px;margin-bottom:8px">Jobs can only come in if the WebSocket is active. Check logs:</p>
-            <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker logs lcai-worker --tail 30 2>&1 | grep -i websocket</pre></div></div>
-            <p style="color:var(--muted);font-size:13px;margin-top:8px">You need to see: <code style="color:var(--green)">websocket connected to gateway</code><br>If absent or showing errors → restart the container and check VPN.</p>
+            <div style="font-weight:700;margin-bottom:6px;color:var(--cyan)">① Is sortition on?</div>
+            <p style="color:var(--muted);font-size:13px;margin-bottom:8px">A worker started without SORTITION_ENABLED is given no jobs. The gateway does not hand them out.</p>
+            <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker logs lightchain-worker --tail 80 2>&1 | grep -E "external worker profile|sortition"</pre></div></div>
+            <p style="color:var(--muted);font-size:13px;margin-top:8px">You want <code style="color:var(--green)">external worker profile</code>. A quiet log after that is normal.</p>
           </div>
 
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:14px">
-            <div style="font-weight:700;margin-bottom:6px;color:var(--cyan)">② Is your VPN connected?</div>
-            <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>mullvad status</pre></div></div>
-            <p style="color:var(--muted);font-size:13px;margin-top:8px">Must show "Connected". If disconnected: <code style="color:var(--cyan)">mullvad connect</code><br>If you're on Cox or another blocking ISP and VPN is off, your node can't reach the gateway.</p>
+            <div style="font-weight:700;margin-bottom:6px;color:var(--cyan)">② Can the container reach the RPC and Ollama?</div>
+            <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>curl -s http://127.0.0.1:11434/api/tags
+curl -s -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' https://rpc.mainnet.lightchain.ai</pre></div></div>
+            <p style="color:var(--muted);font-size:13px;margin-top:8px">Ollama must list the chain model name. The RPC must return a block number. A VPN is not the test.</p>
           </div>
 
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:14px">
@@ -1335,15 +1339,15 @@ mullvad connect</pre></div></div>
 
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:14px">
             <div style="font-weight:700;margin-bottom:6px;color:var(--cyan)">⑤ Is your stake high enough?</div>
-            <p style="color:var(--muted);font-size:13px">Routing priority is proportional to your stake. If you're registered with the minimum (50,001 LCAI) and there are nodes with larger stakes, you may simply be getting fewer jobs. This is expected — staking more increases your share. This isn't a bug, it's the system working as designed.</p>
+            <p style="color:var(--muted);font-size:13px">Sortition weights eligible workers by stake and reputation, then widens who may claim on each block. Minimum stake can win. Extra stake is not a private queue. A registered worker with the model loaded and sortition on can sit quiet while other workers win the draws.</p>
           </div>
 
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:14px">
             <div style="font-weight:700;margin-bottom:6px;color:var(--cyan)">⑥ Check network job volume</div>
-            <p style="color:var(--muted);font-size:13px;margin-bottom:8px">Query the subgraph to see recent network job activity:</p>
+            <p style="color:var(--muted);font-size:13px;margin-bottom:8px">Ask the indexer whether jobs exist. Field names are state and created_at. A row that says Acknowledged can already be closed on chain.</p>
             <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>curl -s -X POST https://workers-api.mainnet.lightchain.ai/graphql \
-  -H "Content-Type: application/json" \
-  -d '{"query":"{ jobs(first:5,orderBy:submittedAt,orderDirection:desc) { id state submittedAt } }"}' | python3 -m json.tool</pre></div></div>
+  -H "Content-Type: application/json" -A "Mozilla/5.0" \
+  -d '{"query":"{ jobs(first:5, orderBy: created_at, orderDirection: desc) { id state created_at } }"}' | python3 -m json.tool</pre></div></div>
             <p style="color:var(--muted);font-size:13px;margin-top:8px">If total recent jobs is very low, the network is quiet — nothing is wrong with your node.</p>
           </div>
         </div>
@@ -1353,20 +1357,20 @@ mullvad connect</pre></div></div>
       <div class="card" id="ts-crashing" style="margin-top:20px">
         <div class="card-title">💥 Container keeps restarting or crashing</div>
         <p style="color:var(--muted);line-height:1.8;margin-bottom:12px">First, read the logs to find the real error:</p>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker logs lcai-worker --tail 100 2>&1</pre></div></div>
+        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker logs lightchain-worker --tail 100 2>&1</pre></div></div>
 
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
             <div style="font-weight:700;color:var(--red);margin-bottom:4px">Error: invalid private key / cannot decrypt keystore</div>
-            <p style="color:var(--muted);font-size:13px">Your PRIVATE_KEY or ENCRYPTION_KEYSTORE_PATH env variable is wrong or the file path doesn't exist inside the container. Verify the key format (must start with 0x) and that any mounted paths are correct.</p>
+            <p style="color:var(--muted);font-size:13px">The long-running container uses the keystore and ENCRYPTION_KEYSTORE_PATH. Do not pass the key as plain text. Check the password and that both files exist under the mounted /data path.</p>
           </div>
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
             <div style="font-weight:700;color:var(--red);margin-bottom:4px">Error: connection refused / dial tcp failed</div>
-            <p style="color:var(--muted);font-size:13px">The container can't reach the Lightchain RPC. Check VPN status (<code style="color:var(--cyan)">mullvad status</code>) and that Ollama is running (<code style="color:var(--cyan)">curl http://localhost:11434/api/tags</code>).</p>
+            <p style="color:var(--muted);font-size:13px">The container cannot reach the RPC or Ollama. Check <code style="color:var(--cyan)">curl http://127.0.0.1:11434/api/tags</code> and the RPC curl in Step 3. A VPN is not the first check.</p>
           </div>
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
             <div style="font-weight:700;color:var(--red);margin-bottom:4px">Container exits immediately with no error</div>
-            <p style="color:var(--muted);font-size:13px">Try running without <code style="color:var(--cyan)">-d</code> (detached) to see output in real-time: <code style="color:var(--cyan)">docker run --rm [all your flags] lightchain/lcai-worker:latest</code></p>
+            <p style="color:var(--muted);font-size:13px">Run the same command without <code style="color:var(--cyan)">-d</code> so the log stays on the terminal. The image is <code style="color:var(--cyan)">registry.lightchain.ai/mainnet/worker:latest</code>. An older public image name is not current.</p>
           </div>
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
             <div style="font-weight:700;color:var(--red);margin-bottom:4px">OOM / out of memory</div>
@@ -1386,7 +1390,7 @@ mullvad connect</pre></div></div>
           </div>
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:12px">
             <div style="font-weight:700;margin-bottom:4px">VRAM conflict with other apps</div>
-            <p style="color:var(--muted);font-size:13px">If you run image generation (ComfyUI, A1111) alongside your node, they compete for VRAM. Check total VRAM usage in <code style="color:var(--cyan)">nvidia-smi</code>. Ollama needs ~5GB free to process jobs without swapping.</p>
+            <p style="color:var(--muted);font-size:13px">Anything else using the GPU can push the model off the card. One loaded model, with its context on the GPU, is the setup that finishes inside 120 seconds on a small card.</p>
           </div>
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:12px">
             <div style="font-weight:700;margin-bottom:4px">Test Ollama directly</div>
@@ -1402,15 +1406,13 @@ mullvad connect</pre></div></div>
         <div class="card-title">🔌 WebSocket keeps disconnecting</div>
         <div class="callout success" style="margin-bottom:16px">
           <div class="callout-icon">✓</div>
-          <div class="callout-body"><strong>Once per hour is NORMAL</strong> — the auth token refreshes every ~60 minutes. You'll see "WebSocket EOF" or "websocket reconnecting" in logs. This is expected and doesn't affect job processing.</div>
+          <div class="callout-body"><strong>The gateway stream can drop and come back</strong> The gateway carries streaming, heartbeats, and drain. It does not assign jobs. A reconnect is not, by itself, a lost job. Sortition keeps claiming while the process is up.</div>
         </div>
-        <p style="color:var(--muted);line-height:1.8;margin-bottom:12px">If it's disconnecting more frequently (every few minutes):</p>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:12px">If the stream drops every few minutes:</p>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:12px">
-            <div style="font-weight:700;margin-bottom:4px">Try a different VPN server</div>
-            <p style="color:var(--muted);font-size:13px">Your Mullvad VPN server might be overloaded or having issues. Switch to a different server — US or EU servers generally work well.</p>
-            <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>mullvad relay set location us    # try US servers
-mullvad reconnect</pre></div></div>
+            <div style="font-weight:700;margin-bottom:4px">Check the path to the gateway and the RPC</div>
+            <p style="color:var(--muted);font-size:13px">A VPN is not required. If both the RPC and the gateway time out, the route is the problem. Sortition still needs the RPC even when the stream is down.</p>
           </div>
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:12px">
             <div style="font-weight:700;margin-bottom:4px">Check network stability</div>
@@ -1423,21 +1425,26 @@ mullvad reconnect</pre></div></div>
       <div class="card" id="ts-slash" style="margin-top:20px;border-color:rgba(255,80,80,0.3)">
         <div class="card-title">⚠️ I think I got slashed — what do I do?</div>
         <p style="color:var(--muted);line-height:1.8;margin-bottom:12px">First, check your actual stake — you may not have been slashed yet:</p>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>curl -s -X POST https://workers-api.mainnet.lightchain.ai/graphql \
-  -H "Content-Type: application/json" \
-  -d '{"query":"{ workers(where:{id:\"YOUR_WORKER_ADDRESS\"}) { stake offenseCount suspendedUntil } }"}' | python3 -m json.tool</pre></div></div>
+        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>export WORKER_ADDR=0xYOUR_WORKER_ADDRESS
+cast call $WORKER_REGISTRY_ADDRESS "getWorkerStake(address)(uint256)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $WORKER_REGISTRY_ADDRESS "getOffenseCount(address)(uint256)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $WORKER_REGISTRY_ADDRESS "isWorkerSuspended(address)(bool)" $WORKER_ADDR --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getTimeoutSlashBps()(uint256)" --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getDisputeSlashBps()(uint256)" --rpc-url $RPC_URL
+cast call $AI_CONFIG_ADDRESS "getSuspensionThreshold()(uint256)" --rpc-url $RPC_URL
+</pre></div></div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
             <div style="font-weight:700;color:var(--red);margin-bottom:4px">offenseCount &gt; 0 but stake unchanged</div>
-            <p style="color:var(--muted);font-size:13px">You received a warning/offense but haven't been slashed yet. Your node may be temporarily suspended. Wait for the suspendedUntil timestamp to pass, then resume operations normally.</p>
+            <p style="color:var(--muted);font-size:13px">An offense is recorded even when the slash rate is 0. On 16 Nov 2026 mainnet did not suspend until the offense count reached 1,000,000. Read isWorkerSuspended. Do not call claimTimeout to clear a queue. That call is what records the offense.</p>
           </div>
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
-            <div style="font-weight:700;color:var(--red);margin-bottom:4px">Stake is less than 50,001 LCAI</div>
-            <p style="color:var(--muted);font-size:13px">You were slashed. The penalty is approximately 7,500 LCAI. Your node may still be registered and operational if stake is above the minimum. Top up your stake if needed, and <strong>do not deregister</strong> until all pending jobs are clear.</p>
+            <div style="font-weight:700;color:var(--red);margin-bottom:4px">Stake is under 50,000 LCAI</div>
+            <p style="color:var(--muted);font-size:13px">The minimum is 50,000 LCAI. If slash rates are still 0, a low balance is unspent gas or a stake that was never the full amount. Deregister does not take a cut of the stake. If a rate is above 0, the penalty is the minimum stake times that rate. Top up with topUpStake if you are under the minimum. Deregister still waits until jobs are released.</p>
           </div>
           <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
             <div style="font-weight:700;color:var(--red);margin-bottom:4px">How to avoid future slashes</div>
-            <p style="color:var(--muted);font-size:13px">Never deregister suddenly. Set up the auto-restart procedure (first section above) so your node survives power loss. If you need to stop the node, restart the Docker container first instead of deregistering.</p>
+            <p style="color:var(--muted);font-size:13px">Keep Docker and Ollama running. Stop with docker stop -t 300 on a v0.0.5 or newer image. Do not deregister to fix a display label. Deregister returns stake only after the dispute window.</p>
           </div>
         </div>
       </div>
@@ -1447,10 +1454,7 @@ mullvad reconnect</pre></div></div>
         <div class="card-title">🚨 Emergency Restart — Run Everything in Order</div>
         <p style="color:var(--muted);line-height:1.8;margin-bottom:16px">Something's wrong and you need to restart everything cleanly. Run these commands in order:</p>
 
-        <div class="callout tip" style="margin-bottom:12px"><div class="callout-icon">1</div><div class="callout-body"><strong>Connect VPN first</strong></div></div>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>mullvad connect && mullvad status</pre></div></div>
-
-        <div class="callout tip" style="margin-top:16px;margin-bottom:12px"><div class="callout-icon">2</div><div class="callout-body"><strong>Start Ollama and verify model</strong></div></div>
+        <div class="callout tip" style="margin-bottom:12px"><div class="callout-icon">1</div><div class="callout-body"><strong>Start Ollama and verify the chain model name</strong></div></div>
         <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>sudo systemctl start ollama
 sleep 5
 curl http://localhost:11434/api/tags | python3 -m json.tool</pre></div></div>
@@ -1459,14 +1463,14 @@ curl http://localhost:11434/api/tags | python3 -m json.tool</pre></div></div>
         <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>ollama cp llama3:8b llama3-8b</pre></div></div>
 
         <div class="callout tip" style="margin-top:16px;margin-bottom:12px"><div class="callout-icon">4</div><div class="callout-body"><strong>Restart worker container</strong></div></div>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker restart lcai-worker 2>/dev/null || docker restart lightchain-worker 2>/dev/null</pre></div></div>
+        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker restart lightchain-worker</pre></div></div>
 
         <div class="callout tip" style="margin-top:16px;margin-bottom:12px"><div class="callout-icon">5</div><div class="callout-body"><strong>Watch startup logs — look for all 6 healthy lines</strong></div></div>
-        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker logs -f lcai-worker 2>/dev/null || docker logs -f lightchain-worker 2>/dev/null</pre></div></div>
+        <div class="code-block"><div class="code-header"><span class="code-label">terminal</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div><div class="code-content"><pre>docker logs -f lightchain-worker</pre></div></div>
 
         <div class="callout success" style="margin-top:16px">
           <div class="callout-icon">✓</div>
-          <div class="callout-body"><strong>All 6 lines = you're good:</strong> worker registration validated → blob mode: eip-4844 → authenticated with worker-gateway → worker service initialized → worker sidecar running → websocket connected to gateway</div>
+          <div class="callout-body"><strong>You are up when the log shows the external profile.</strong> Look for external worker profile, registration validated, authenticated with worker-gateway, and sortition. A quiet log after that is normal. Restarting does not finish a job the chain still shows as acknowledged.</div>
         </div>
       </div>
 
@@ -1485,28 +1489,24 @@ curl http://localhost:11434/api/tags | python3 -m json.tool</pre></div></div>
           </div>
           <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:12px">
             <div style="font-weight:700;margin-bottom:4px;color:var(--cyan)">What to do</div>
-            <p style="color:var(--muted);font-size:13px">Nothing — your node is fine. Report the discrepancy in the Lightchain Discord so the team can fix the indexer. Do NOT deregister and re-register again trying to fix the display — that risks another slash.</p>
+            <p style="color:var(--muted);font-size:13px">Nothing on the worker. Read isWorkerRegistered with cast. Since 26 Oct 2026 the indexer has also stored timed-out jobs as Acknowledged, so the history page can say Pending for a job the chain already closed. Do not deregister to fix a label.</p>
           </div>
         </div>
       </div>
 
       <!-- GEMMA4 BUG -->
       <div class="card" id="ts-gemmabug" style="margin-top:20px;border-color:rgba(255,80,80,0.3)">
-        <div class="card-title">⛔ gemma4:e2b — do not try to register this model</div>
-        <div class="callout warning" style="margin-bottom:16px">
-          <div class="callout-icon">⚠️</div>
-          <div class="callout-body"><strong>Known bug:</strong> <code style="color:var(--cyan)">gemma4:e2b</code> is listed as whitelisted and enabled in the model registry, but <code style="color:var(--cyan)">AddSupportedModel</code> reverts with no error message when you try to register it. The contract is broken for this model. <code style="color:var(--cyan)">llama3-8b</code> works correctly.</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="background:rgba(255,80,80,0.06);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px">
-            <div style="font-weight:700;color:var(--red);margin-bottom:4px">What happens if you try it</div>
-            <p style="color:var(--muted);font-size:13px">The worker binary registers the node, then tries to add gemma4:e2b as a supported model, gets a revert, and rolls back via DeregisterWorker. This triggers an endless loop of register → deregister → register. This also triggers Bug #1 above (status stuck as deregistered). Do not attempt to use this model until the team fixes the contract.</p>
-          </div>
-          <div style="background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:10px;padding:12px">
-            <div style="font-weight:700;margin-bottom:4px;color:var(--cyan)">What to do instead</div>
-            <p style="color:var(--muted);font-size:13px">Use <code style="color:var(--cyan)">llama3-8b</code> only. It is confirmed working and is the standard model for Lightchain worker nodes. Remove any reference to gemma4:e2b from your <code style="color:var(--cyan)">SUPPORTED_MODELS</code> environment variable.</p>
-          </div>
-        </div>
+        <div class="card-title">✅ gemma4:e2b — the old do-not-register note is out of date</div>
+        <p style="color:var(--muted);line-height:1.8">On 16 Nov 2026 <code style="color:var(--cyan)">gemma4:e2b</code> was whitelisted, enabled, priced at 0.02 LCAI, and capped at 2048 output tokens. Workers were serving it. Pull the tag as written and add that exact name to SUPPORTED_MODELS. Removing the name from the environment and restarting does not remove a model already added on chain. That takes removeSupportedModel from the worker account.</p>
+        <p style="color:var(--muted);line-height:1.8;margin-top:10px">Other enabled names that day, with the job fee and output cap: llama3-8b 0.02 / 2048, qwen3-vl:8b 0.02 / 4096, glm-4.7-flash 0.02 / 8192, tts-piper 0.02 / 2048, gemma4:26b 0.04 / 8192, gpt-oss:20b 0.04 / 8192, qwen3-coder-next 0.05 / 16384, mistral-small:24b 0.05 / 4096, qwen3.6:27b 0.06 / 8192, qwen3-vl:30b 0.08 / 4096, deepseek-r1:32b 0.08 / 8192, llama3-70b 0.15 / 4096, gpt-oss:120b 0.20 / 8192. qwen3-embedding:0.6b was whitelisted and not enabled. Fees change on chain.</p>
+      </div>
+
+
+      <div class="card" id="ts-stuck" style="margin-top:20px">
+        <div class="card-title">Stuck job — acknowledged, and a restart did not finish it</div>
+        <p style="color:var(--muted);line-height:1.8">Restarting the container does not complete a job the chain still has as acknowledged. An answer that is only hidden thinking, with no visible text, is a failed job. Do not paste that hidden thinking into the answer. A dispute compares the visible answer.</p>
+        <p style="color:var(--muted);line-height:1.8;margin-top:10px">Three endings, none of which is a container restart. The worker account can call abandonJob while the job is submitted or acknowledged. That refunds the payer, records a reputation timeout, and does not slash or add an offense. It is not a subcommand in the worker CLI. settleStuckJob is the documented no-fault path once the 120 second deadline plus 48 hours have passed. Keepers send it. claimTimeout records an offense. With slash rates at 0 it moves no LCAI, and it is the call to avoid when you only want the slot back.</p>
+        <p style="color:var(--muted);line-height:1.8;margin-top:10px">The history page is not the chain. Since 26 Oct 2026 the indexer has stored timed-out jobs as acknowledged, so a closed job can still look pending. Read the chain before you treat that row as open.</p>
       </div>
 
       <div class="callout tip" style="margin-top:20px">
@@ -1536,7 +1536,7 @@ curl http://localhost:11434/api/tags | python3 -m json.tool</pre></div></div>
 
       <div class="card">
         <div class="card-title">Worker</div>
-        <p style="color:var(--muted);font-size:14px;line-height:1.7">A fresh server with an NVIDIA card. Mainnet stake is 50,000 LCAI, plus about 50 LCAI for gas. Testnet stake is 5,000 LCAI-t, plus about 50 LCAI-t for gas. The default model in the official example is <code style="color:var(--cyan)">llama3-8b</code>.</p>
+        <p style="color:var(--muted);font-size:14px;line-height:1.7">A fresh server with an NVIDIA card. The current script installs the official worker binary as a systemd service. It does not start the Docker image from the steps above. Mainnet stake is 50,000 LCAI, plus about 50 LCAI for gas. Testnet stake is 5,000 LCAI-t, plus about 50 LCAI-t for gas. The default model in the official example is <code style="color:var(--cyan)">llama3-8b</code>.</p>
         <div class="code-block">
           <div class="code-header"><span class="code-label">terminal — read it first</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
           <div class="code-content"><pre>git clone https://github.com/lightchain-protocol/lightchain-rails.git
@@ -1743,16 +1743,10 @@ journalctl -u lightchain-worker -f</pre></div>
 
   // ── Template Kit Download ──────────────────────────────────────────
   function downloadTemplateKit() {
-    const envTemplate = `# Node Builder .env Template
-# Generated by Node Builder Wizard — https://keiko-dev-lcai.github.io/orcanode/
-#
-# FILL IN THESE 3 VALUES (everything else is pre-filled for Lightchain mainnet):
-#
-PRIVATE_KEY=PASTE_YOUR_WORKER_PRIVATE_KEY_HERE
-ECDH_KEY=PASTE_YOUR_ECDH_KEY_IN_BASE64_HERE
-WORKER_ADDRESS=PASTE_YOUR_WORKER_WALLET_ADDRESS_HERE
-#
-# The following are already correct for Lightchain mainnet — do not change:
+    const envTemplate = `# Node Builder checklist — https://orcanode.win
+# Do not put a private key in this file.
+# The running worker reads a keystore. See Step 8 and Step 11.
+
 SUPPORTED_MODELS=llama3-8b
 OLLAMA_URL=http://host.docker.internal:11434
 CHAIN_ID=9200
@@ -1760,181 +1754,69 @@ RPC_URL=https://rpc.mainnet.lightchain.ai
 BEACON_API_URL=https://beacon.mainnet.lightchain.ai
 WORKER_REGISTRY_ADDRESS=0x0000000000000000000000000000000000001002
 WORKER_GATEWAY_URL=https://worker-gateway.mainnet.lightchain.ai
-# DO NOT SET MODELS_MAP — it breaks worker job routing (community confirmed)
+SORTITION_ENABLED=true
+# Resolve AI_CONFIG_ADDRESS, JOB_REGISTRY_ADDRESS, and SESSION_MANAGER_ADDRESS
+# with the cast commands in Step 5.
 `;
 
     const runWorker = `#!/usr/bin/env bash
-# run-worker.sh — Start your Lightchain AI worker node
-# Generated by Node Builder Wizard — https://keiko-dev-lcai.github.io/orcanode/
-#
-# Prerequisites:
-#   1. Fill in .env (PRIVATE_KEY, ECDH_KEY, WORKER_ADDRESS)
-#   2. Ollama running: ollama serve
-#   3. Bare alias created: ollama cp llama3:8b llama3-8b
-#   4. VPN connected (if your ISP blocks Lightchain RPC)
-#   5. Node registered on-chain (Step 10 in the wizard)
-
+# Checks the local worker files. Does not start the container and does not read a private key.
 set -e
-
-SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
-ENV_FILE="\$SCRIPT_DIR/.env"
-
-if [ ! -f "\$ENV_FILE" ]; then
-  echo "ERROR: .env file not found at \$ENV_FILE"
-  echo "Copy .env.template to .env and fill in your values."
+echo "This script does not start the worker."
+echo "Use the Step 11 command on https://orcanode.win"
+echo "Image: registry.lightchain.ai/mainnet/worker:latest"
+echo "SORTITION_ENABLED must be true."
+if [ ! -d "$HOME/lightchain-worker/keys/eth-keystore" ]; then
+  echo "No keystore yet. Import one with the Step 8 command."
   exit 1
 fi
-
-# Load env file
-set -a
-source "\$ENV_FILE"
-set +a
-
-# Validate required values
-for VAR in PRIVATE_KEY ECDH_KEY WORKER_ADDRESS; do
-  VAL="\${!VAR}"
-  if [ -z "\$VAL" ] || [[ "\$VAL" == *"PASTE"* ]]; then
-    echo "ERROR: \$VAR is not set in .env"
-    exit 1
-  fi
-done
-
-echo "Starting Lightchain AI Worker..."
-echo "  Worker: \$WORKER_ADDRESS"
-echo "  Models: \$SUPPORTED_MODELS"
-echo ""
-
-# Stop existing container if running
-docker stop lcai-worker 2>/dev/null || true
-docker rm   lcai-worker 2>/dev/null || true
-
-# Pull latest image
-echo "Pulling latest worker image..."
-docker pull lightchain/lcai-worker:latest
-
-# Launch worker
-docker run -d --name lcai-worker \\
-  --gpus all \\
-  --network host \\
-  --add-host=host.docker.internal:host-gateway \\
-  --restart unless-stopped \\
-  -e PRIVATE_KEY="\$PRIVATE_KEY" \\
-  -e ECDH_KEY="\$ECDH_KEY" \\
-  -e SUPPORTED_MODELS="\$SUPPORTED_MODELS" \\
-  -e OLLAMA_URL="\$OLLAMA_URL" \\
-  -e CHAIN_ID="\$CHAIN_ID" \\
-  -e RPC_URL="\$RPC_URL" \\
-  -e BEACON_API_URL="\$BEACON_API_URL" \\
-  -e WORKER_REGISTRY_ADDRESS="\$WORKER_REGISTRY_ADDRESS" \\
-  -e WORKER_GATEWAY_URL="\$WORKER_GATEWAY_URL" \\
-  lightchain/lcai-worker:latest
-
-echo ""
-echo "Worker started! Checking logs in 5 seconds..."
-sleep 5
-echo ""
-echo "=== Recent logs (last 30 lines) ==="
-docker logs lcai-worker --tail 30
-echo ""
-echo "Look for these 6 lines to confirm healthy startup:"
-echo "  worker registration validated"
-echo "  blob mode: eip-4844 (beacon)"
-echo "  authenticated with worker-gateway"
-echo "  worker service initialized (gateway mode)"
-echo "  worker sidecar running (gateway mode)"
-echo "  websocket connected to gateway"
-echo ""
-echo "Live logs: docker logs -f lcai-worker"
+if ! ollama list | grep -q 'llama3-8b'; then
+  echo "llama3-8b alias is missing. Run: ollama pull llama3:8b && ollama cp llama3:8b llama3-8b"
+  exit 1
+fi
+echo "Keystore directory and llama3-8b alias are present."
 `;
 
     const setupCheck = `#!/usr/bin/env bash
-# setup-check.sh — Verify prerequisites before running your Lightchain worker
-# Generated by Node Builder Wizard — https://keiko-dev-lcai.github.io/orcanode/
-
 PASS=0
 FAIL=0
-
 check() {
-  local NAME="\$1"
-  local CMD="\$2"
-  local HINT="\$3"
-  if eval "\$CMD" &>/dev/null; then
-    echo "  [PASS] \$NAME"
-    ((PASS++))
-  else
-    echo "  [FAIL] \$NAME"
-    echo "         Hint: \$HINT"
-    ((FAIL++))
-  fi
+  local NAME="$1" CMD="$2" HINT="$3"
+  if eval "$CMD" &>/dev/null; then echo "  [PASS] $NAME"; PASS=$((PASS+1))
+  else echo "  [FAIL] $NAME"; echo "         $HINT"; FAIL=$((FAIL+1)); fi
 }
-
-echo "======================================"
-echo "  Node Builder Prerequisites Check"
-echo "======================================"
-echo ""
-
 echo "[ Docker ]"
-check "Docker installed"      "command -v docker"               "Install Docker: https://docs.docker.com/engine/install/ubuntu/"
-check "Docker running"        "docker info"                     "Start Docker: sudo systemctl start docker"
-check "nvidia-container-toolkit" "docker run --rm --gpus all nvidia/cuda:12.0-base-ubuntu22.04 nvidia-smi" "Install: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html"
-
-echo ""
+check "Docker installed" "command -v docker" "Install Docker"
+check "Docker running" "docker info" "sudo systemctl start docker"
 echo "[ GPU ]"
-check "nvidia-smi available"  "command -v nvidia-smi"           "Install NVIDIA drivers: sudo ubuntu-drivers autoinstall"
-check "GPU detected"          "nvidia-smi"                      "Check NVIDIA driver installation"
-check "CUDA available"        "nvidia-smi | grep -i cuda"       "Install CUDA toolkit"
-
-echo ""
+check "nvidia-smi" "command -v nvidia-smi" "sudo ubuntu-drivers autoinstall, then reboot"
 echo "[ Ollama ]"
-check "Ollama installed"      "command -v ollama"               "Install: curl -fsSL https://ollama.ai/install.sh | sh"
-check "Ollama running"        "curl -s http://localhost:11434/api/tags" "Start: ollama serve"
-check "llama3:8b pulled"      "ollama list | grep 'llama3:8b'"  "Pull: ollama pull llama3:8b"
-check "llama3-8b alias set"   "ollama list | grep 'llama3-8b '" "Create alias: ollama cp llama3:8b llama3-8b  (CRITICAL!)"
-
-echo ""
-echo "[ Foundry (cast) ]"
-check "cast installed"        "command -v cast"                 "Install Foundry: curl -L https://foundry.paradigm.xyz | bash && foundryup"
-
-echo ""
-echo "[ Redis ]"
-check "Redis installed"       "command -v redis-cli"            "Install: sudo apt install redis-server"
-check "Redis running"         "redis-cli ping | grep -i pong"   "Start: sudo systemctl start redis"
-
-echo ""
-echo "[ Network ]"
-check "Lightchain RPC accessible" "curl -sf https://rpc.mainnet.lightchain.ai" "Check VPN — some ISPs (Cox, etc.) block this. Use Mullvad VPN."
-check "Worker gateway accessible" "curl -sf https://worker-gateway.mainnet.lightchain.ai" "Check network/VPN"
-
-echo ""
-echo "======================================"
-if [ "\$FAIL" -eq 0 ]; then
-  echo "  All \$PASS checks passed! You're ready to run the worker."
-else
-  echo "  \$PASS passed, \$FAIL failed. Fix the issues above before running."
-fi
-echo "======================================"
+check "Ollama installed" "command -v ollama" "https://ollama.com/install.sh"
+check "Ollama responding" "curl -sf http://127.0.0.1:11434/api/tags" "ollama serve"
+check "llama3-8b alias" "ollama list | grep -q llama3-8b" "ollama pull llama3:8b && ollama cp llama3:8b llama3-8b"
+echo "[ Foundry ]"
+check "cast installed" "command -v cast" "foundryup"
+echo "[ RPC ]"
+check "mainnet RPC" "curl -sf -X POST -H 'Content-Type: application/json' --data '{\\"jsonrpc\\":\\"2.0\\",\\"method\\":\\"eth_blockNumber\\",\\"params\\":[],\\"id\\":1}' https://rpc.mainnet.lightchain.ai" "A VPN is not required. Fix the route if this times out."
+echo "$PASS passed, $FAIL failed"
 `;
 
-    // Create a simple multi-file zip using the Blob API (no external library needed)
-    // We'll create individual file downloads since JSZip isn't loaded
     const files = [
       { name: '.env.template',  content: envTemplate },
       { name: 'run-worker.sh',  content: runWorker },
       { name: 'setup-check.sh', content: setupCheck },
     ];
 
-    // Try to use JSZip if available, otherwise download files individually
     if (window.JSZip) {
       const zip = new window.JSZip();
       files.forEach(f => zip.file(f.name, f.content));
       zip.generateAsync({ type: 'blob' }).then(blob => {
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'orcanode-template.zip';
+        a.download = 'node-builder-checklist.zip';
         a.click();
       });
     } else {
-      // Download each file individually
       files.forEach((f, i) => {
         setTimeout(() => {
           const blob = new Blob([f.content], { type: 'text/plain' });
@@ -1945,7 +1827,7 @@ echo "======================================"
         }, i * 300);
       });
       setTimeout(() => {
-        alert('3 template files downloaded! Move them to the same folder, fill in .env, then run: bash run-worker.sh');
+        alert('3 checklist files downloaded. They do not contain a key and they do not start the container. Use Step 11.');
       }, 1200);
     }
   }
@@ -2056,13 +1938,12 @@ echo "======================================"
       }
       results.style.display = 'block';
     } catch (e) {
-      badge.textContent = 'Server not running';
-      summary.textContent = '⚠️ Could not reach Node Builder at localhost:8185.';
+      badge.textContent = 'Manual checks';
+      summary.textContent = 'The one-click compare is not running on this site.';
       summary.style.color = '#ffaa00';
       list.innerHTML = '<div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,170,0,0.3);border-radius:8px;padding:14px 16px">'
-        + '<div style="font-weight:600;margin-bottom:8px">Start the server:</div>'
-        + '<div style="font-family:monospace;font-size:13px;background:rgba(0,0,0,0.4);border-radius:6px;padding:10px 14px;color:var(--cyan)">python3 ~/Desktop/orcanode/orcanode-server.py</div>'
-        + '<div style="margin-top:10px;font-size:12px;color:var(--muted)">Then open <a href="http://localhost:8185" style="color:var(--cyan)">http://localhost:8185</a> and click Compare Now.</div></div>';
+        + '<div style="font-weight:600;margin-bottom:8px">Use the troubleshooting cards</div>'
+        + '<div style="font-size:13px;color:var(--muted)">Nothing you type here is uploaded. The current checks are sortition, Ollama, the chain model name, and the chain stake.</div></div>';
       results.style.display = 'block';
     }
 
@@ -2119,9 +2000,9 @@ echo "======================================"
           'Then: docker logs lightchain-worker --tail 30'
         ],
         redis: [
-          'Redis isn\'t running. Start and enable it:',
-          'sudo systemctl start redis\nsudo systemctl enable redis',
-          'Check status: sudo systemctl status redis'
+          'An independent worker does not use Redis.',
+          'Check sortition instead:',
+          'docker inspect lightchain-worker --format \'{{range .Config.Env}}{{println .}}{{end}}\' | grep SORTITION_ENABLED'
         ],
         ollama: [
           'Ollama isn\'t running or the llama3-8b alias is missing.',
@@ -2144,11 +2025,9 @@ echo "======================================"
           'Target: keep at least 20GB free'
         ],
         vpn: [
-          'Mullvad VPN is not connected. The worker needs VPN for most ISPs.',
-          'Connect: mullvad connect',
-          'Check status: mullvad status',
-          'If not installed: see Step 3 for Mullvad setup instructions.',
-          'If already connected but still failing — try a different server location.'
+          'A VPN is not required.',
+          'Test the RPC:',
+          'curl -s -X POST -H \'Content-Type: application/json\' --data \'{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}\' https://rpc.mainnet.lightchain.ai'
         ],
         docker_stats: [
           'Could not get container stats — container may not be running.',
@@ -2157,10 +2036,10 @@ echo "======================================"
           'Watch logs: docker logs -f lightchain-worker'
         ],
         rpc: [
-          'Cannot reach the Lightchain RPC. This is usually a VPN or ISP issue.',
-          'First: make sure Mullvad is connected (mullvad connect)',
-          'If connected, try switching Mullvad server location.',
-          'Cox and some other ISPs block this endpoint without VPN.',
+          'Cannot reach the Lightchain RPC.',
+          'A VPN is not required.',
+          'Test the same URL from a terminal.',
+          'If it times out, the route is the problem.',
           'Test manually: curl -sf https://rpc.mainnet.lightchain.ai'
         ],
         subgraph: [
@@ -2198,16 +2077,14 @@ echo "======================================"
       }
       results.style.display = 'block';
     } catch (e) {
-      badge.textContent = 'Server not running';
+      badge.textContent = 'Manual checks';
       badge.style.color = 'var(--muted)';
-      summary.textContent = '⚠️ Could not reach the Node Builder server at localhost:8185.';
+      summary.textContent = 'The one-click health check is not running on this site.';
       summary.style.color = '#ffaa00';
       results.style.display = 'block';
       list.innerHTML = '<div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,170,0,0.3);border-radius:8px;padding:14px 16px">'
-        + '<div style="font-weight:600;margin-bottom:8px;color:#ffaa00">To start the server, open a terminal and run:</div>'
-        + '<div style="font-family:monospace;font-size:13px;background:rgba(0,0,0,0.4);border-radius:6px;padding:10px 14px;color:var(--cyan);user-select:all">python3 ~/Desktop/orcanode/orcanode-server.py</div>'
-        + '<div style="margin-top:10px;font-size:12px;color:var(--muted)">Or if you installed it as a service: <code style="color:var(--cyan)">sudo systemctl start orcanode-server</code></div>'
-        + '<div style="margin-top:6px;font-size:12px;color:var(--muted)">Then reload this page at <a href="http://localhost:8185" style="color:var(--cyan)">http://localhost:8185</a> and click Run All Checks Now again.</div>'
+        + '<div style="font-weight:600;margin-bottom:8px;color:#ffaa00">Use the ten checks on this page</div>'
+        + '<div style="font-size:13px;color:var(--muted)">Nothing you type here is uploaded.</div>'
         + '</div>';
     }
 
@@ -2228,7 +2105,7 @@ echo "======================================"
       const d = await r.json();
       badge.innerHTML = '<span style="color:var(--green)">● Backend online</span> · AIVM ' + (d.aivm ? 'ready' : 'off') + ' · ' + (d.uptimeLabel || 'running');
     } catch (e) {
-      badge.innerHTML = '<span style="color:var(--orange)">● Start server</span> · <span>python3 ~/Desktop/orcanode/orcanode-server.py</span>';
+      badge.innerHTML = '<span style="color:var(--orange)">● Start server</span> · <span>The one-click checker is not running on this site. Use the manual checks on this page. Nothing you type here is uploaded.</span>';
     }
   })();
 
@@ -2238,27 +2115,22 @@ echo "======================================"
       const resp = await fetch('https://workers-api.mainnet.lightchain.ai/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: '{ workers(first:1000) { id jobs_completed total_earned } }' })
+        body: JSON.stringify({ query: '{ networkstats { total_workers active_workers total_jobs_completed } }' })
       });
       const d = await resp.json();
-      const workers = d.data.workers;
-      const totalWorkers = workers.length;
-      const activeWorkers = workers.filter(w => parseInt(w.jobs_completed) > 0);
-      const totalJobs = workers.reduce((s, w) => s + parseInt(w.jobs_completed || 0), 0);
-      const totalEarned = workers.reduce((s, w) => s + parseInt(w.total_earned || 0), 0);
-      const totalEarnedLcai = (totalEarned / 1e18).toFixed(2);
-      const avgPerActive = activeWorkers.length > 0
-        ? ((totalEarned / 1e18) / activeWorkers.length).toFixed(2)
-        : '0';
+      const stats = d.data.networkstats[0];
+      const totalWorkers = stats.total_workers;
+      const activeWorkers = stats.active_workers;
+      const totalJobs = stats.total_jobs_completed;
 
-      document.getElementById('statWorkers').textContent = totalWorkers;
-      document.getElementById('statActive').textContent = activeWorkers.length;
-      document.getElementById('statJobs').textContent = totalJobs.toLocaleString();
-      document.getElementById('statEarned').textContent = parseFloat(totalEarnedLcai).toFixed(1);
+      document.getElementById('statWorkers').textContent = Number(totalWorkers).toLocaleString();
+      document.getElementById('statActive').textContent = Number(activeWorkers).toLocaleString();
+      document.getElementById('statJobs').textContent = Number(totalJobs).toLocaleString();
+      const earnedEl = document.getElementById('statEarned');
+      if (earnedEl) earnedEl.textContent = '80%';
 
-      // Reward estimator
-      document.getElementById('rewardAvg').innerHTML = avgPerActive + ' <span style="font-size:12px;color:var(--muted)">LCAI</span>';
-      document.getElementById('rewardJobs').innerHTML = totalJobs.toLocaleString() + ' <span style="font-size:12px;color:var(--muted)">jobs</span>';
+      document.getElementById('rewardAvg').innerHTML = '80 / 15 / 5';
+      document.getElementById('rewardJobs').innerHTML = Number(totalJobs).toLocaleString() + ' <span style="font-size:12px;color:var(--muted)">jobs</span>';
       document.getElementById('rewardEstimator').style.display = 'block';
     } catch (e) {
       // Silently fail — stats are a nice-to-have
@@ -2300,7 +2172,7 @@ echo "======================================"
       }
       results.style.display = 'block';
     } catch (e) {
-      summary.textContent = '⚠️ Could not connect to Node Builder server. Start it first, then try again.';
+      summary.textContent = 'This button only reaches a checker on this computer. The public site does not run it. Use the hardware table above.';
       summary.style.color = '#ffaa00';
       results.style.display = 'block';
       list.innerHTML = '';
@@ -2318,7 +2190,7 @@ echo "======================================"
       const banner = document.createElement('div');
       banner.id = 'localBanner';
       banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a2a1a;border-top:2px solid var(--green);color:#ccc;font-size:13px;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:9999';
-      banner.innerHTML = '<span>⚡ <strong>Node operators:</strong> For <strong>Compare with Reference Node</strong>, AI chat &amp; Live Health Check, open <a href="http://localhost:8185" style="color:var(--cyan);font-weight:700">http://localhost:8185</a> after starting the Node Builder server.</span><button onclick="document.getElementById(\'localBanner\').remove()" style="background:none;border:1px solid #555;color:#aaa;border-radius:4px;padding:3px 10px;cursor:pointer;flex-shrink:0">✕ Dismiss</button>';
+      banner.innerHTML = '<span>The one-click checker and Ask button are not running on this site. Use the steps on this page. Nothing you type is uploaded.</span><button onclick="document.getElementById(\'localBanner\').remove()" style="background:none;border:1px solid #555;color:#aaa;border-radius:4px;padding:3px 10px;cursor:pointer;flex-shrink:0">✕ Dismiss</button>';
       document.body.appendChild(banner);
     }
   })();
@@ -2465,12 +2337,7 @@ echo "======================================"
       loadingEl.textContent = answer;
     } catch (err) {
       if (err.name === 'TypeError' || err.message.includes('fetch') || err.message.includes('connect')) {
-        loadingEl.innerHTML = '⚠️ Could not reach the Node Builder server.<br><br>'
-          + '<strong>Start it with:</strong><br>'
-          + '<code style="background:rgba(0,0,0,0.4);padding:4px 8px;border-radius:4px;color:var(--cyan)">python3 ~/Desktop/orcanode/orcanode-server.py</code><br><br>'
-          + 'Or if installed as a service:<br>'
-          + '<code style="background:rgba(0,0,0,0.4);padding:4px 8px;border-radius:4px;color:var(--cyan)">sudo systemctl start orcanode-server</code><br><br>'
-          + 'Then reload at <a href="http://localhost:8185" style="color:var(--cyan)">http://localhost:8185</a> and try again.';
+        loadingEl.innerHTML = 'Ask is not running on this site. Use the troubleshooting cards. Nothing you type here is uploaded.';
       } else {
         loadingEl.textContent = '⚠️ Error: ' + err.message;
       }
@@ -2504,7 +2371,7 @@ echo "======================================"
       <button onclick="document.getElementById('orca-terms-overlay').style.display='none'" style="background:#1a2e3f;border:none;color:#8fa8c0;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1;">✕</button>
     </div>
     <div style="overflow-y:auto;padding:20px 22px;font-size:13px;color:#8fa8c0;line-height:1.75;display:flex;flex-direction:column;gap:14px;">
-      <p style="font-size:12px;color:#2a4a5f;">Last updated: May 2025 &nbsp;·&nbsp; OrcaNode — Lightchain Node Builder</p>
+      <p style="font-size:12px;color:#2a4a5f;">Last updated: Nov 16, 2026 &nbsp;·&nbsp; OrcaNode — Lightchain Node Builder</p>
 
       <div><div style="font-size:13px;font-weight:700;color:#e0eaf5;margin-bottom:5px;">1. What OrcaNode Is</div>
       <p>OrcaNode is a free informational tool to help users set up and troubleshoot Lightchain worker nodes. It is operated by an individual developer and provided as-is. It is not an official Lightchain Foundation product.</p></div>
