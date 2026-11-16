@@ -109,7 +109,7 @@ tail -n 40 /var/log/lightchain-deploy.log</pre>
       <tbody>
         <tr><td>0</td><td>Running</td><td>Back up <code>/etc/lightchain/worker/</code>. That directory holds the worker key, the encryption key, and the password.</td></tr>
         <tr><td>1</td><td>Failed, or the lock is busy</td><td>Read the log. A second deploy exits 1 and leaves the old status file in place.</td></tr>
-        <tr><td>2</td><td>Needs funding</td><td>Send 50,000 LCAI, plus about 50 LCAI for gas, to the address in the status file. Then run the same command again.</td></tr>
+        <tr><td>2</td><td>Needs funding</td><td>Mainnet: send 50,000 LCAI, plus about 50 LCAI for gas, to the address in the status file. Testnet: send 5,000 LCAI-t, plus about 50 LCAI-t for gas. Then run the same command again.</td></tr>
         <tr><td>3</td><td>Reboot required</td><td>The NVIDIA driver was installed. Reboot. The deploy continues after boot. If it does not, run the same command again.</td></tr>
         <tr><td>4</td><td>Preflight refused</td><td>The status state is <code>failed</code>. Fix the machine, then run the same command again.</td></tr>
       </tbody>
@@ -147,14 +147,14 @@ tail -n 40 /var/log/lightchain-deploy.log</pre>
     <p>Use a blank Ubuntu server. 22.04 and 24.04 are the versions the scripts were tested on. Other Ubuntu versions get a warning, and the script continues. Read the script before you run it. It runs as root, installs packages, and can reboot the machine for an NVIDIA driver.</p>
     <p>The scripts live in the official repo: <a href="https://github.com/lightchain-protocol/lightchain-rails">lightchain-protocol/lightchain-rails</a>. The license is MIT. Node Builder links to that copy. It does not ship its own.</p>
     <h3>Worker</h3>
-    <p>A fresh server with an NVIDIA card. Mainnet stake is 50,000 LCAI, plus about 50 LCAI for gas. Testnet stake in the script is 100 LCAI. The default model in the official example is <code>llama3-8b</code>.</p>
+    <p>A fresh server with an NVIDIA card. Mainnet stake is 50,000 LCAI, plus about 50 LCAI for gas. Testnet stake is 5,000 LCAI-t, plus about 50 LCAI-t for gas. The default model in the official example is <code>llama3-8b</code>.</p>
     <pre>git clone https://github.com/lightchain-protocol/lightchain-rails.git
 cd lightchain-rails
 sudo bash deploy-worker.sh --network mainnet --models llama3-8b --dry-run</pre>
     <p>Read the plan. Then run the same command without <code>--dry-run</code>. Add <code>--auto-reboot</code> only if you want the script to reboot itself when the driver install needs it. Come back here with the exit code and the status file.</p>
     <p><code>--models-disk</code> puts models on a second disk. The script formats that disk only when it has no filesystem, and it labels the new filesystem <code>ollama</code>. A disk that already has a filesystem is not wiped. The mount looks for <code>LABEL=ollama</code>, so a disk with a different label can fail to mount.</p>
     <h3>Node</h3>
-    <p>A fresh server with a public IPv4 address. A validator needs 500,000 LCAI staked per key, plus the keystores, the password file, and a fee-recipient address. The script does not stake that for you.</p>
+    <p>A fresh server with a public IPv4 address. A validator on mainnet needs 500,000 LCAI staked per key. On testnet the script's figure is 100,000 LCAI-t. The run also needs the keystores, the password file, and a fee-recipient address. The script does not stake for you, and it does not check that balance.</p>
     <pre>git clone https://github.com/lightchain-protocol/lightchain-rails.git
 cd lightchain-rails
 sudo bash deploy-node.sh --network mainnet --extip YOUR_PUBLIC_IP --dry-run</pre>
@@ -189,6 +189,11 @@ lcw withdraw</pre>
 (function () {
   var btn = document.getElementById("go");
   var out = document.getElementById("result");
+  function stakeText(network) {
+    if (network === "testnet") return "5,000 LCAI-t plus about 50 LCAI-t for gas";
+    if (network === "mainnet") return "50,000 LCAI plus about 50 LCAI for gas";
+    return "50,000 LCAI plus about 50 LCAI for gas on mainnet, or 5,000 LCAI-t plus about 50 LCAI-t for gas on testnet";
+  }
   function line(cls, text) {
     var p = document.createElement("p");
     p.className = cls || "";
@@ -237,7 +242,7 @@ lcw withdraw</pre>
         line("warn", "deploy-node.sh does not use exit 2 or exit 3. Those codes belong to deploy-worker.sh.");
       }
       if (state === "running") line("ok", "The script's last write says running. Back up /etc/lightchain/worker/ if this was a worker. Then check lcw status.");
-      if (state === "needs-funding") line("warn", "Fund the address in this file with 50,000 LCAI plus about 50 LCAI for gas, then run the same worker command again.");
+      if (state === "needs-funding") line("warn", "Fund the address in this file with " + stakeText(data.network) + ", then run the same worker command again.");
       if (state === "reboot-required") line("warn", "Reboot the machine. After boot, run the same command again if the deploy does not continue.");
       if (state === "deploying") line("warn", "The file was left in deploying. The run may still be going, or it died after this write. Check the lock and the end of the log.");
       if (state === "removed") line("", "The last write was an uninstall. The service was removed. Keys and data stay unless that run also purged them.");
@@ -245,7 +250,7 @@ lcw withdraw</pre>
     }
     if (code === "0") line("ok", "Exit 0 means the script finished in the running state.");
     if (code === "1") line("warn", "Exit 1 is a failure, or the shared deploy lock was busy. A busy lock does not update the status file. Read the newest lines of the deploy log.");
-    if (code === "2") line("warn", "Exit 2 means the worker address still needs 50,000 LCAI plus gas. Send it, then re-run.");
+    if (code === "2" && !(data && data.state === "needs-funding")) line("warn", "Exit 2 means the worker address still needs " + stakeText(data && data.network) + ". Send it, then re-run.");
     if (code === "3") line("warn", "Exit 3 means the worker script installed the NVIDIA driver and is waiting for a reboot.");
     if (code === "4") line("bad", "Exit 4 is preflight. Not root writes no status file. The other refusals write state failed, then exit 4.");
     if (code === "none") line("warn", "You also have a status file. If its updated time is old, this run stopped before it could replace that file.");
